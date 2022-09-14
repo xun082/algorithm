@@ -24,17 +24,17 @@ const sort = (array) => {
 
 // 选择排序
 const baseSort = (array) => {
-  for (let i = 0; i < array.length / 2; i++) {
+  for (let i = 0; i < array.length; i++) {
     let minIndex = i;
-    for (let j = i + 1; j < array.length - 1; j++) {
+    for (let j = i + 1; j < array.length; j++) {
       if (array[j] < array[minIndex]) minIndex = j;
     }
-    [array[j], array[minIndex]] = [array[minIndex], array[j]];
+    [array[i], array[minIndex]] = [array[minIndex], array[i]];
   }
   return array;
 };
 
-const array = [1, 3, 5, 6, 9, 8, 7, 10, 15];
+const array = [1, 24, 5, 9, 6, 8, 7, 10, 15];
 console.time("s");
 console.log(...sort(array));
 console.timeEnd("s");
