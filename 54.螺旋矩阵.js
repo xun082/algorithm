@@ -10,44 +10,36 @@
  * @return {number[]}
  */
 var spiralOrder = function (matrix) {
-  if (matrix.length === 0) return [];
-
-  let top = 0;
-  let bottom = matrix.length - 1;
-  let left = 0;
-  let right = matrix[0].length;
-
-  let direction = "right";
-  const result = [];
-
-  while (left <= right && top <= bottom) {
-    if (direction === "right") {
-      for (let i = left; i <= right; i++) {
-        result.push(matrix[top][i]);
-      }
-      top++;
-      direction = "down";
-    } else if (direction === "down") {
-      for (let i = top; i <= bottom; i++) {
-        result.push(matrix[i][right]);
-      }
-      right--;
-      direction = "left";
-    } else if (direction === "left") {
-      for (let i = right; i >= left; i++) {
-        result.push(matrix[bottom][i]);
-      }
-      bottom--;
-      direction = "top";
-    } else if (direction === "top") {
-      for (let i = right; i >= left; i++) {
-        result.push(matrix[i][left]);
-      }
-      left++;
-      direction = "right";
-    }
+  if (!matrix.length || !matrix[0].length) {
+    return [];
   }
 
-  return result; 
+  const rows = matrix.length,
+    columns = matrix[0].length;
+  const order = [];
+  let left = 0;
+  let right = columns - 1;
+  let top = 0;
+  let bottom = rows - 1;
+
+  while (left <= right && top <= bottom) {
+    for (let column = left; column <= right; column++) {
+      order.push(matrix[top][column]);
+    }
+    for (let row = top + 1; row <= bottom; row++) {
+      order.push(matrix[row][right]);
+    }
+    if (left < right && top < bottom) {
+      for (let column = right - 1; column > left; column--) {
+        order.push(matrix[bottom][column]);
+      }
+      for (let row = bottom; row > top; row--) {
+        order.push(matrix[row][left]);
+      }
+    }
+    [left, right, top, bottom] = [left + 1, right - 1, top + 1, bottom - 1];
+  }
+  return order;
 };
+
 // @lc code=end
