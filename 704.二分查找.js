@@ -15,7 +15,9 @@ var search = function (nums, target) {
   let right = nums.length - 1;
 
   while (left <= right) {
-    let mid = (left + right) >> 1;
+    // 除2
+    let mid = Math.floor(left + ((right - left) >> 1));
+
     if (nums[mid] < target) {
       // 在mid右边继续查找
       left = mid + 1;
@@ -23,7 +25,7 @@ var search = function (nums, target) {
       // 在mid左边继续查找
       right = mid - 1;
     } else {
-      //   找到了
+      // 找到了
       return mid;
     }
   }
