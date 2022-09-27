@@ -17,7 +17,9 @@
  * @return {ListNode}
  */
 var middleNode = function (head) {
-  let slow = (fast = head);
+  // 快慢指针
+  let slow = head;
+  let fast = head;
   while (fast && fast.next) {
     slow = slow.next;
     fast = fast.next.next;
