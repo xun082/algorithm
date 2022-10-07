@@ -9,6 +9,7 @@
  * @param {string[]} wordDict
  * @return {boolean}
  */
+
 var wordBreak = function (s, wordDict) {
   const n = s.length;
   const set = new Set(wordDict);
