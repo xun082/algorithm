@@ -14,16 +14,17 @@ var removeDuplicates = function (nums) {
 
   if (length <= 2) return length;
 
-  // 快慢指针
   let slow = 2;
   let fast = 2;
-
   while (fast < length) {
     if (nums[slow - 2] !== nums[fast]) {
-      nums[slow] = nums[slow];
+      nums[slow] = nums[fast];
       ++slow;
     }
     ++fast;
   }
+
+  return slow;
 };
+
 // @lc code=end
