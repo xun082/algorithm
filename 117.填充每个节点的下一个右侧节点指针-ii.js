@@ -20,22 +20,32 @@
  * @return {Node}
  */
 var connect = function (root) {
-  if (root === null) return root;
+  if (!root) return null;
 
   const queue = [root];
+  let cur;
+  let level;
 
   while (queue.length) {
-    let length = queue.length;
-    while (length--) {
-      const node = queue.shift();
+    level = queue.length;
+    let i = 0;
+    const temp = [];
 
-      if (length > 0) node.next = queue[0];
+    while (i++ < level) {
+      cur = queue.shift();
 
-      node.left && queue.push(node.left);
-      node.right && queue.push(node.right);
+      temp.push(cur);
+
+      cur.left && queue.push(cur.left);
+      cur.right && queue.push(cur.right);
     }
+
+    temp.forEach((v, k) => {
+      v.next = temp[k + 1] || null;
+    });
   }
 
   return root;
 };
+
 // @lc code=end
