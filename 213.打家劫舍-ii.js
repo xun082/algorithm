@@ -12,29 +12,28 @@
 var rob = function (nums) {
   const length = nums.length;
 
-  if (length === 0) return 0;
-  if (length === 1) return nums[0];
+  if (length === 1) {
+    return nums[0];
+  } else if (length === 2) {
+    return Math.max(nums[0], nums[1]);
+  }
 
-  const result1 = robRange(nums, 0, length - 2);
-  const result2 = robRange(nums, 1, length - 1);
-
-  return Math.max(result1, result2);
+  return Math.max(robRange(nums, 0, length - 2), robRange(nums, 1, length - 1));
 };
 
-function robRange(nums, start, end) {
-  if (end === start) {
-    return nums[start];
-  }
+const robRange = (nums, start, end) => {
+  let first = nums[start];
+  // 获取到相邻的两个中的最大值
+  let second = Math.max(nums[start], nums[start + 1]);
 
-  const dp = new Array(nums.length).fill(0);
-
-  dp[start] = nums[start];
-  dp[start + 1] = Math.max(nums[start], nums[start + 1]);
-
+  // 因为偷取相邻的两个会被抓,所以只能头第二个 i+2
   for (let i = start + 2; i <= end; i++) {
-    dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+    const temp = second;
+    second = Math.max(first + nums[i], second);
+    first = temp;
   }
 
-  return dp[end];
-}
+  return second;
+};
+
 // @lc code=end
