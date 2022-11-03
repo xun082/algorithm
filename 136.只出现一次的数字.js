@@ -10,14 +10,12 @@
  * @return {number}
  */
 var singleNumber = function (nums) {
-  let ans = nums[0];
+  let result = 0;
 
-  if (nums.length > 1) {
-    for (let i = 1; i < nums.length; i++) {
-      ans = ans ^ nums[i];
-    }
-  }
+  nums.forEach((num) => {
+    result ^= num;
+  });
 
-  return ans;
+  return result;
 };
 // @lc code=end
