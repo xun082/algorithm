@@ -18,15 +18,43 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function (list1, list2) {
-  if (list1 === null) return list2;
-  if (list2 === null) return list1;
+  /**
+   * @author xun
+   * @method  递归
+   */
+  // if (list1 === null) return list2;
+  // if (list2 === null) return list1;
+  // if (list1.val < list2.val) {
+  //   list1.next = mergeTwoLists(list1.next, list2);
+  //   return list1;
+  // } else {
+  //   list2.next = mergeTwoLists(list1, list2.next);
+  //   return list2;
+  // }
+  /**
+   * @author xun
+   * @method  迭代
+   */
 
-  if (list1.val < list2.val) {
-    list1.next = mergeTwoLists(list1.next, list2);
-    return list1;
-  } else {
-    list2.next = mergeTwoLists(list1, list2.next);
-    return list2;
+  // 首先设置一个哨兵节点
+  const preHead = new ListNode(-1);
+
+  let previous = preHead;
+  while (list1 !== null && list2 !== null) {
+    if (list1.val <= list2.val) {
+      previous.next = list1;
+      list1 = list1.next;
+    } else {
+      previous.next = list2;
+      list2 = list2.next;
+    }
+
+    previous = previous.next;
   }
+
+  // 因为同时循环的,可能存在某一个链表存在一个元素
+  previous.next = list1 === null ? list2 : list1;
+
+  return preHead.next;
 };
 // @lc code=end

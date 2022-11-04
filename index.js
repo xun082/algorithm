@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=19 lang=javascript
+ * @lc app=leetcode.cn id=21 lang=javascript
  *
- * [19] 删除链表的倒数第 N 个结点
+ * [21] 合并两个有序链表
  */
 
 // @lc code=start
@@ -13,24 +13,20 @@
  * }
  */
 /**
- * @param {ListNode} head
- * @param {number} n
+ * @param {ListNode} list1
+ * @param {ListNode} list2
  * @return {ListNode}
  */
-var removeNthFromEnd = function (head, n) {
-  let fast = head;
-  let slow = head;
+var mergeTwoLists = function (list1, list2) {
+  if (list1 === null) return list2;
+  if (list2 === null) return list1;
 
-  for (let i = 0; i < n; i++) {
-    fast = fast.next; //fast 和 slow相隔n
+  if (list1.val < list2.val) {
+    list1.next = mergeTwoLists(list1.next, list2);
+    return list1;
+  } else {
+    list2.next = mergeTwoLists(list1, list2.next);
+    return list2;
   }
-  if (fast === null) return head.next; //说明删除的是头结点
-
-  while (fast.next !== null) {
-    fast = fast.next;
-    slow = slow.next;
-  }
-  slow.next = slow.next.next;
-  return head;
 };
 // @lc code=end
