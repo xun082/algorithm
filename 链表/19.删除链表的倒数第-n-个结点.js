@@ -23,6 +23,13 @@ var removeNthFromEnd = function (head, n) {
    * @method 快慢指针
    */
 
+  /**
+   * @author xun
+   * @method 快慢指针
+   * @时间复杂度 O(L)
+   * @空间复杂度 O(1)
+   */
+
   let fast = head;
   let slow = head;
 
