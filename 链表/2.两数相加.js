@@ -19,7 +19,8 @@
  */
 var addTwoNumbers = function (l1, l2) {
   /**
-   * @author 模拟
+   * @author xun
+   * @method 模拟
    */
   // var ten = 0;
   // var head = null,
@@ -52,7 +53,8 @@ var addTwoNumbers = function (l1, l2) {
   // }
   // return head;
   /**
-   * @author 哨兵节点
+   * @author xun
+   * @method 哨兵节点
    */
 
   const dummy = new ListNode(null);
