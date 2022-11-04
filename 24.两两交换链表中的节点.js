@@ -17,20 +17,18 @@
  * @return {ListNode}
  */
 var swapPairs = function (head) {
-  const dummy = new ListNode();
-  dummy.next = head;
-  let current = dummy;
+  /**
+   * @author xun
+   * @method  递归
+   */
 
-  while (current.next !== null && current.next.next !== null) {
-    const n1 = current.next;
-    const n2 = current.next.next;
+  if (head === null || head.next === null) return head;
 
-    current.next = n2;
-    n1.next = n2.next;
-    n2.next = n1;
-    current = n1;
-  }
+  const newHead = head.next;
 
-  return dummy.next;
+  head.next = swapPairs(newHead.next);
+  newHead.next = head;
+
+  return newHead;
 };
 // @lc code=end
