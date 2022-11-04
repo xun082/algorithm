@@ -18,19 +18,28 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function (head, n) {
+  /**
+   * @author xun
+   * @method 快慢指针
+   */
+
   let fast = head;
   let slow = head;
 
-  for (let i = 0; i < n; i++) {
-    fast = fast.next; //fast 和 slow相隔n
+  let i = 0;
+  while (i < n) {
+    fast = fast.next; // fast 和 slow 相隔 n
+    i++;
   }
-  if (fast === null) return head.next; //说明删除的是头结点
+
+  if (fast === null) return head.next; // 删除的是头结点的情况
 
   while (fast.next !== null) {
     fast = fast.next;
     slow = slow.next;
   }
   slow.next = slow.next.next;
+
   return head;
 };
 // @lc code=end
