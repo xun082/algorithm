@@ -21,14 +21,32 @@ var swapPairs = function (head) {
    * @author xun
    * @method  递归
    */
+  // if (head === null || head.next === null) return head;
+  // const newHead = head.next;
+  // head.next = swapPairs(newHead.next);
+  // newHead.next = head;
+  // return newHead;
+  /**
+   * @author xun
+   * @method  迭代
+   */
 
-  if (head === null || head.next === null) return head;
+  const dummyHead = new ListNode(0);
+  dummyHead.next = head;
 
-  const newHead = head.next;
+  let temp = dummyHead;
 
-  head.next = swapPairs(newHead.next);
-  newHead.next = head;
+  while (temp.next !== null && temp.next.next !== null) {
+    const node1 = temp.next;
+    const node2 = temp.next.next;
 
-  return newHead;
+    // 交换两个变量
+    temp.next = node2;
+    node1.next = node2.next;
+    node2.next = node1;
+    temp = node1;
+  }
+
+  return dummyHead.next;
 };
 // @lc code=end
