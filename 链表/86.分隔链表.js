@@ -18,6 +18,12 @@
  * @return {ListNode}
  */
 var partition = function (head, x) {
+  /**
+   * @author xun
+   * @method 模拟
+   * @timeComplexity O(n)
+   * @spaceComplexity O(1)
+   */
   if (!head || !head.next) return head;
 
   // 维护两个链表 small 和large
@@ -42,7 +48,7 @@ var partition = function (head, x) {
   }
 
   large.next = null;
-  small.next = largeHead.next;
+  small.next = largeHead.next; // 链表合并
 
   // 有哨兵
   return smallHead.next;
