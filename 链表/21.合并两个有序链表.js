@@ -20,7 +20,9 @@
 var mergeTwoLists = function (list1, list2) {
   /**
    * @author xun
-   * @method  递归
+   * @method 递归
+   * @timeComplexity O(n + m)
+   * @spaceComplexity O(n + m)
    */
   // if (list1 === null) return list2;
   // if (list2 === null) return list1;
@@ -31,13 +33,15 @@ var mergeTwoLists = function (list1, list2) {
   //   list2.next = mergeTwoLists(list1, list2.next);
   //   return list2;
   // }
+
   /**
    * @author xun
-   * @method  迭代
+   * @method 迭代
+   * @timeComplexity O(m+n)
+   * @spaceComplexity O(1)
    */
 
-  // 首先设置一个哨兵节点
-  const preHead = new ListNode(-1);
+  const preHead = new ListNode(-1); // 首先设置一个哨兵节点
 
   let previous = preHead;
   while (list1 !== null && list2 !== null) {
