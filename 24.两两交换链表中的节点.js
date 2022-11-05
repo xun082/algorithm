@@ -19,7 +19,9 @@
 var swapPairs = function (head) {
   /**
    * @author xun
-   * @method  递归
+   * @method 递归
+   * @timeComplexity O(n)
+   * @spaceComplexity O(n)
    */
   // if (head === null || head.next === null) return head;
   // const newHead = head.next;
@@ -28,7 +30,9 @@ var swapPairs = function (head) {
   // return newHead;
   /**
    * @author xun
-   * @method  迭代
+   * @method 迭代
+   * @timeComplexity O(n)
+   * @spaceComplexity O(1)
    */
 
   const dummyHead = new ListNode(0);
