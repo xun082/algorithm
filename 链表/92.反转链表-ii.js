@@ -31,10 +31,11 @@ var reverseBetween = function (head, left, right) {
   }
   // 走到left的位置
   let previous = temp.next;
+
   let current = previous.next;
 
   for (let j = 0; j < right - left; j++) {
-    let next = current.next;
+    const next = current.next;
     current.next = previous;
     previous = current;
     current = next;
