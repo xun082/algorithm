@@ -19,7 +19,10 @@
  */
 var hasCycle = function (head) {
   /**
-   * @author 备忘录
+   * @author xun
+   * @method 哈希表
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
    */
   // const cache = new Set();
 
@@ -36,7 +39,10 @@ var hasCycle = function (head) {
   // return false;
 
   /**
-   * @author 快慢指针
+   * @author xun
+   * @method 快慢指针
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
    */
   let fast = head;
   let slow = head;
