@@ -46,8 +46,10 @@ var getIntersectionNode = function (headA, headB) {
    * @spaceComplexity O(1)
    */
   if (headA === null || headB === null) return null;
+
   let planA = headA;
   let planB = headB;
+
   while (planA !== planB) {
     planA = planA === null ? headB : planA.next;
     planB = planB === null ? headA : planB.next;
