@@ -18,20 +18,20 @@
  * @return {number[]}
  */
 var inorderTraversal = function (root) {
-  const result = [];
-  const stack = [];
-
-  while (root || stack.length) {
-    while (root) {
-      stack.push(root);
-      root = root.left;
-    }
-    root = stack.pop();
-    result.push(root.val);
-    root = root.right;
-  }
-
-  return result;
+  /**
+   * @author xun
+   * @method 递归
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  // const result = [];
+  // const inOrder = (root) => {
+  //   if (!root) return;
+  //   inOrder(root.left);
+  //   result.push(root.val);
+  //   inOrder(root.right);
+  // };
+  // inOrder(root);
+  // return result;
 };
 // @lc code=end
-
