@@ -71,3 +71,20 @@ var isPalindrome = function (head) {
   return result;
 };
 // @lc code=end
+
+const isPalindrome = function (head) {
+  const values = [];
+
+  while (head !== null) {
+    values.push(head.val);
+    head = head.next;
+  }
+
+  for (let i = 0, j = values.length - 1; i < j; i++, j--) {
+    if (values[i] !== values[j]) {
+      return false;
+    }
+  }
+
+  return true;
+};
