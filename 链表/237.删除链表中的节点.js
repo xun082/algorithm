@@ -17,6 +17,12 @@
  * @return {void} Do not return anything, modify node in-place instead.
  */
 var deleteNode = function (node) {
+  /**
+   * @author xun
+   * @method
+   * @timeComplexity O(1)
+   * @spaceComplexity O(1)
+   */
   node.val = node.next.val;
   node.next = node.next.next;
 };

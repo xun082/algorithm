@@ -73,6 +73,12 @@ var isPalindrome = function (head) {
 // @lc code=end
 
 const isPalindrome = function (head) {
+  /**
+   * @author xun
+   * @method 头尾同时遍历
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
   const values = [];
 
   while (head !== null) {
