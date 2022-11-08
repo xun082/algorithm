@@ -18,22 +18,42 @@
  * @return {boolean}
  */
 var isValidBST = function (root) {
-  let previous = -Infinity;
-
-  function traverse(node) {
-    if (node === null) return true;
-
-    const left = traverse(node.left);
-    if (previous >= node.val) {
-      //   破坏了递增的逻辑
+  /**
+   * @author xun
+   * @method 递归
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  // function helper(root, lower, upper) {
+  //   if (root === null) return true;
+  //   if (root.val <= lower || root.val >= upper) return false;
+  //   return (
+  //     helper(root.left, lower, root.val) && helper(root.right, root.val, upper)
+  //   );
+  // }
+  // return helper(root, -Infinity, Infinity);
+  /**
+   * @author xun
+   * @method 中序遍历
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  const stack = [];
+  let inOrder = -Infinity;
+  while (stack.length | (root !== null)) {
+    while (root !== null) {
+      stack.push(root);
+      root = root.left;
+    }
+    root = stack.pop();
+    // 如果中序遍历得到的节点的值小于等于前一个 inOrder，说明不是二叉搜索树
+    if (root.val <= inOrder) {
       return false;
     }
-
-    previous = node.val;
-    const right = traverse(node.right);
-    return left && right;
+    inOrder = root.val;
+    root = root.right;
   }
 
-  return traverse(root);
+  return true;
 };
 // @lc code=end
