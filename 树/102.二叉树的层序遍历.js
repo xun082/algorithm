@@ -18,6 +18,13 @@
  * @return {number[][]}
  */
 var levelOrder = function (root) {
+  /**
+   * @author xun
+   * @method 广度优先
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+
   const result = []; //结果
   const queue = [root]; //遍历中用的队列
 
