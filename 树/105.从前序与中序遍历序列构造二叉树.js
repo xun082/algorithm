@@ -19,26 +19,27 @@
  * @return {TreeNode}
  */
 var buildTree = function (preorder, inorder) {
-  // preorder 是二叉树的先序遍历
-  // inorder 是同一棵树的中序遍历
-  if (preorder.length === 0 || inorder.length === 0) return null;
+  /**
+   * @author xun
+   * @method 递归
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
+  if (preorder.length === 0 || inorder.length === 0) return null; //递归终止条件
 
-  // preorder[0]是根节点
-  const root = new TreeNode(preorder[0]);
+  const root = new TreeNode(preorder[0]); //根节点
 
-  const rootIndex = inorder.indexOf(preorder[0]);
+  let rootIndex = inorder.indexOf(preorder[0]); //根节点在中序遍历中的索引
 
-  //左子树
   root.left = buildTree(
     preorder.slice(1, rootIndex + 1),
     inorder.slice(0, rootIndex)
-  );
+  ); //左子树
 
-  //右子树
   root.right = buildTree(
     preorder.slice(rootIndex + 1),
     inorder.slice(rootIndex + 1)
-  );
+  ); //右子树
 
   return root;
 };
