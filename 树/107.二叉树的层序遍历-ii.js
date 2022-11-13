@@ -18,12 +18,16 @@
  * @return {number[][]}
  */
 var levelOrderBottom = function (root) {
+  /**
+   * @author xun
+   * @method 广度优先
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  if (!root) return [];
+
   const result = []; //结果
   const queue = [root]; //遍历中用的队列
-
-  if (root === null) {
-    return result;
-  }
 
   //当队列中还有值
   while (queue.length) {
