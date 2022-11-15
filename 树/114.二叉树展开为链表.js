@@ -18,21 +18,52 @@
  * @return {void} Do not return anything, modify root in-place instead.
  */
 var flatten = function (root) {
+  /**
+   * @author xun
+   * @method 前序遍历和展开同步进行
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  // if (root === null) return;
+  // const stack = [root];
+  // let previous = null;
+  // while (stack.length) {
+  //   const current = stack.pop();
+  //   if (previous !== null) {
+  //     previous.left = null;
+  //     previous.right = current;
+  //   }
+  //   const left = current.left;
+  //   const right = current.right;
+  //   if (right !== null) {
+  //     stack.push(right);
+  //   }
+  //   if (left !== null) {
+  //     stack.push(left);
+  //   }
+  //   previous = current;
+  // }
+  /**
+   * @author xun
+   * @method 寻找前驱节点
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
   let current = root;
+
   while (current !== null) {
     if (current.left !== null) {
-      // 2
       const next = current.left;
-      // 2
       let predecessor = next;
 
+      // 左节点的最后一个右节点
       while (predecessor.right !== null) {
-        //   4
         predecessor = predecessor.right;
       }
-
       predecessor.right = current.right;
+
       current.left = null;
+
       current.right = next;
     }
     current = current.right;
