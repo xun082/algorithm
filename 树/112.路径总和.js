@@ -19,11 +19,17 @@
  * @return {boolean}
  */
 var hasPathSum = function (root, targetSum) {
+  /**
+   * @author xun
+   * @method 深度优先
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
   if (root === null) return false;
-
-  if (!root.left && !root.right) return root.val === targetSum;
+  if (root.left === null && root.right === null) return root.val === targetSum;
 
   const offset = targetSum - root.val;
+
   return hasPathSum(root.left, offset) || hasPathSum(root.right, offset);
 };
 // @lc code=end
