@@ -20,22 +20,33 @@
  * @return {Node}
  */
 var connect = function (root) {
+  /**
+   * @author xun
+   * @method 使用已建立的next指针
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
   if (root === null) return root;
 
-  const queue = [root];
+  // 从根节点开始
+  let leftmost = root;
 
-  while (queue.length) {
-    let length = queue.length;
-    while (length--) {
-      const node = queue.shift();
+  while (leftmost.left !== null) {
+    // 遍历这一层节点组织成的链表,为下一层的节点更新next 指针
+    let head = leftmost;
 
-      if (length > 0) node.next = queue[0];
+    while (head !== null) {
+      head.left.next = head.right;
 
-      node.left && queue.push(node.left);
-      node.right && queue.push(node.right);
+      if (head.next !== null) {
+        head.right.next = head.next.left;
+      }
+
+      head = head.next;
     }
+    // 去下一层的最左节点
+    leftmost = leftmost.left;
   }
-
   return root;
 };
 // @lc code=end
