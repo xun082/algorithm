@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=113 lang=javascript
+ * @lc app=leetcode.cn id=144 lang=javascript
  *
- * [113] 路径总和 II
+ * [144] 二叉树的前序遍历
  */
 
 // @lc code=start
@@ -15,66 +15,40 @@
  */
 /**
  * @param {TreeNode} root
- * @param {number} targetSum
- * @return {number[][]}
+ * @return {number[]}
  */
-var pathSum = function (root, targetSum) {
-  // 深度优先
-  //   const arr = [];
-  //   const path = [];
-  //   dfs(root, path, arr, targetSum);
-  //   function dfs(root, path, arr, sum) {
-  //     if (!root) return;
-  //     path.push(root.val);
-  //     if (root.val == sum && root.left == null && root.right == null) {
-  // 满足要求且该节点为叶子节点
-  //       arr.push([...path]);
-  //     }
-  //     dfs(root.left, path, arr, sum - root.val);
-  //     dfs(root.right, path, arr, sum - root.val);
-  //     path.pop();
-  //   }
-  //   return arr;
+var preorderTraversal = function (root) {
+  let result = [];
 
-  const result = [];
-  const path = [];
+  if (root === null) return result;
 
-  function getPath(root, targetSum) {
-    if (!root) return;
+  let stack = [root];
 
-    //   第一次减枝
-    let checkValFlag =
-      root.val <= targetSum ||
-      Math.abs(root.val) ||
-      root.left != null ||
-      root.right != null;
+  while (stack.length) {
+    let current = stack.pop();
 
-    if (checkValFlag) {
-      path.push(root.val);
-      targetSum -= root.val;
-    } else {
-      return; //无法继续往下搜索
-    }
-    // 2.第二次剪枝
-    if (targetSum === 0 && root.left === null && root.right === null) {
-      result.push([...path]);
-      path.pop();
-      return;
-    }
-    /// 3.第三次剪枝
-    if (root.left !== null) {
-      getPath(root.left, targetSum);
-    }
+    result.push(current.val);
 
-    /// 3.第四次剪枝
-    if (root.right !== null) {
-      getPath(root.right, targetSum);
-    }
-    path.pop();
+    //   栈结构
+    current.right && stack.push(current.right);
+    current.left && stack.push(current.left);
   }
-  getPath(root, targetSum);
 
   return result;
-};
 
+  // 递归方法
+  //   let arr = [];
+
+  //   function dfs(root) {
+  //     if (root === null) {
+  //       return;
+  //     }
+  //     arr.push(root.val);
+  //     dfs(root.left);
+  //     dfs(root.right);
+  //   }
+  //   dfs(root);
+
+  //   return arr;
+};
 // @lc code=end
