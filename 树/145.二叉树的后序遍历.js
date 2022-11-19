@@ -18,17 +18,23 @@
  * @return {number[]}
  */
 var postorderTraversal = function (root) {
-  // 递归方法
-  let arr = [];
+  /**
+   * @author xun
+   * @method 递归遍历
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  const result = [];
+
   function dfs(root) {
-    if (root === null) {
-      return;
-    }
+    if (root === null) return [];
+
     dfs(root.left);
     dfs(root.right);
-    arr.push(root.val);
+    result.push(root.val);
   }
   dfs(root);
-  return arr;
+
+  return result;
 };
 // @lc code=end
