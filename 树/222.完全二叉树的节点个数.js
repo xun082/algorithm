@@ -18,7 +18,14 @@
  * @return {number}
  */
 var countNodes = function (root) {
+  /**
+   * @author xun
+   * @method 递归
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
   function traverse(node) {
+    // 左节点+右节点+1
     if (node === null) return 0;
 
     let leftNum = traverse(node.left);
