@@ -19,19 +19,26 @@
  * @return {number}
  */
 var kthSmallest = function (root, k) {
-  let count = 0;
+  /**
+   * @author xun
+   * @method 中序遍历
+   * @timeComplexity O(H+k)
+   * @spaceComplexity O(H)
+   */
   const stack = [];
 
-  while (root || stack.length) {
-    while (root) {
+  while (root !== null || stack.length) {
+    while (root !== null) {
       stack.push(root);
       root = root.left;
     }
     root = stack.pop();
-
-    if (++count === k) return root.val;
-
+    --k;
+    if (k === 0) {
+      break;
+    }
     root = root.right;
   }
+  return root.val;
 };
 // @lc code=end
