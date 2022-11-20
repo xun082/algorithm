@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=144 lang=javascript
+ * @lc app=leetcode.cn id=199 lang=javascript
  *
- * [144] 二叉树的前序遍历
+ * [199] 二叉树的右视图
  */
 
 // @lc code=start
@@ -17,38 +17,28 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-var preorderTraversal = function (root) {
+var rightSideView = function (root) {
+  // 每一层最右边的一个值
   let result = [];
+  let queue = [root];
 
-  if (root === null) return result;
+  if (root === null) {
+    return result;
+  }
 
-  let stack = [root];
+  while (queue.length) {
+    let length = queue.length;
+    while (length--) {
+      let node = queue.shift();
 
-  while (stack.length) {
-    let current = stack.pop();
-
-    result.push(current.val);
-
-    //   栈结构
-    current.right && stack.push(current.right);
-    current.left && stack.push(current.left);
+      if (length === 0) {
+        result.push(node.val);
+      }
+      node.left && queue.push(node.left);
+      node.right && queue.push(node.right);
+    }
   }
 
   return result;
-
-  // 递归方法
-  //   let arr = [];
-
-  //   function dfs(root) {
-  //     if (root === null) {
-  //       return;
-  //     }
-  //     arr.push(root.val);
-  //     dfs(root.left);
-  //     dfs(root.right);
-  //   }
-  //   dfs(root);
-
-  //   return arr;
 };
 // @lc code=end

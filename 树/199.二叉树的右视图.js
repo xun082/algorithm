@@ -18,22 +18,28 @@
  * @return {number[]}
  */
 var rightSideView = function (root) {
-  // 每一层最右边的一个值
-  let result = [];
-  let queue = [root];
+  /**
+   * @author xun
+   * @method 广度优先
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  const result = [];
 
-  if (root === null) {
-    return result;
-  }
+  const queue = [root];
+
+  if (root === null) return result;
 
   while (queue.length) {
     let length = queue.length;
+
     while (length--) {
       let node = queue.shift();
 
       if (length === 0) {
         result.push(node.val);
       }
+
       node.left && queue.push(node.left);
       node.right && queue.push(node.right);
     }
