@@ -18,23 +18,20 @@
  * @return {number}
  */
 var sumOfLeftLeaves = function (root) {
-  let sum = 0;
+  /**
+   * @author xun
+   * @method 递归
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  if (!root) return 0;
 
-  function traverse(node) {
-    if (node === null) return;
+  let result = 0;
 
-    // left是单节点
-    const left = node.left;
-    if (left && !left.left && !left.right) {
-      sum += left.val;
-    }
-
-    traverse(node.left);
-    traverse(node.right);
+  if (root.left && !root.left.left && !root.left.right) {
+    result = root.left.val;
   }
 
-  traverse(root);
-
-  return sum;
+  return result + sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
 };
 // @lc code=end
