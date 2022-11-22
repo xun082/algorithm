@@ -18,21 +18,30 @@
  * @return {string[]}
  */
 var binaryTreePaths = function (root) {
-  const result = [];
+  /**
+   * @author xun
+   * @method 深度优先
+   * @timeComplexity O(N*N)
+   * @spaceComplexity O(N*N)
+   */
+  const paths = [];
 
-  const traverse = (node, path) => {
-    if (node === null) {
-      return null;
+  function dfs(root, path) {
+    if (root) {
+      path += root.val.toString();
+
+      if (root.left === null && root.right === null) {
+        // 当前节点是叶子节点
+        paths.push(path);
+      } else {
+        path += "->";
+        dfs(root.left, path);
+        dfs(root.right, path);
+      }
     }
+  }
 
-    if (node.left === null && node.right === null) {
-      result.push(path + node.val);
-    }
-    traverse(node.left, path + node.val + "->");
-    traverse(node.right, path + node.val + "->");
-  };
-  traverse(root, "");
-
-  return result;
+  dfs(root, "");
+  return paths;
 };
 // @lc code=end
