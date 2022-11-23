@@ -18,23 +18,20 @@
  * @return {number}
  */
 var diameterOfBinaryTree = function (root) {
-  let diameter = null;
+  if (root === null || (root.left === null && root.right === null)) return 0;
+
+  let result = 0;
 
   function dfs(root) {
-    if (root === null) {
-      return null;
-    }
-
+    if (root === null) return 0;
     let left = dfs(root.left);
     let right = dfs(root.right);
 
-    diameter = Math.max(diameter, left + right);
+    result = Math.max(result, left + right);
 
     return Math.max(left, right) + 1;
   }
-
   dfs(root);
-
-  return diameter;
+  return result;
 };
 // @lc code=end
