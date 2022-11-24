@@ -18,10 +18,31 @@
  * @return {number[]}
  */
 var averageOfLevels = function (root) {
+  // const result = [];
+  // if (root === null) return result;
+  // let queue = [root];
+  // while (queue.length) {
+  //   const length = queue.length;
+  //   let sum = 0;
+  //   for (let i = 0; i < length; i++) {
+  //     const node = queue.shift();
+  //     sum += node.val;
+  //     node.left && queue.push(node.left);
+  //     node.right && queue.push(node.right);
+  //   }
+  //   result.push(sum / length);
+  // }
+  // return result;
+  /**
+   * @author xun
+   * @method 广度优先遍历
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
   const result = [];
   if (root === null) return result;
 
-  let queue = [root];
+  const queue = [root];
 
   while (queue.length) {
     const length = queue.length;
@@ -29,13 +50,13 @@ var averageOfLevels = function (root) {
     let sum = 0;
     for (let i = 0; i < length; i++) {
       const node = queue.shift();
+
       sum += node.val;
       node.left && queue.push(node.left);
       node.right && queue.push(node.right);
     }
     result.push(sum / length);
   }
-
   return result;
 };
 // @lc code=end
