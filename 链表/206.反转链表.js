@@ -38,14 +38,30 @@ var reverseList = function (head) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
+  // if (head === null || head.next === null) return head;
+  // const newHead = reverseList(head.next);
+  // head.next.next = head;
+  // head.next = null;
+  // return newHead;
+  /**
+   * @author xun
+   * @method 双指针
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
+  if (head === null) return null;
 
-  if (head === null || head.next === null) return head;
+  let current = head;
 
-  const newHead = reverseList(head.next);
+  while (head.next !== null) {
+    let temp = head.next.next;
 
-  head.next.next = head;
-  head.next = null;
-
-  return newHead;
+    head.next.next = current;
+    // 每次都让 head 下一个结点的 next 指向 current ，实现一次局部反转
+    current = head.next;
+    // head 的 next 指针同时 往前移动一个位置
+    head.next = temp;
+  }
+  return current;
 };
 // @lc code=end
