@@ -11,11 +11,13 @@
  * @return {number}
  */
 var threeSumClosest = function (nums, target) {
-  // 1.排序
-  // 2.从头固定一个值，后面采用双指针遍历
-  // 3.用累加和与目标值进行比较
+  /**
+   * @author xun
+   * @method 排序+双指针
+   * @timeComplexity O(N*N)
+   * @spaceComplexity O(log N)
+   */
   nums.sort((a, b) => a - b);
-
   const length = nums.length;
 
   if (length < 3) return;
@@ -37,11 +39,8 @@ var threeSumClosest = function (nums, target) {
         sum = n1 + n2 + n3;
       }
 
-      if (result >= 0) {
-        right--;
-      } else {
-        left++;
-      }
+      if (result >= 0) right--;
+      else left++;
     }
   }
 
