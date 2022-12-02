@@ -10,20 +10,26 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
+  /**
+   * @author xun
+   * @method 双指针
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
   const length = nums.length;
 
   if (length <= 2) return length;
 
   let slow = 2;
   let fast = 2;
+
   while (fast < length) {
     if (nums[slow - 2] !== nums[fast]) {
       nums[slow] = nums[fast];
-      ++slow;
+      slow++;
     }
-    ++fast;
+    fast++;
   }
-
   return slow;
 };
 
