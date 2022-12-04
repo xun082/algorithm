@@ -11,17 +11,16 @@
  * @return {number[]}
  */
 var intersection = function (nums1, nums2) {
+  /**
+   * @author xun
+   * @method 两个集合
+   * @timeComplexity O(M + N)
+   * @spaceComplexity O(M + N)
+   */
   const result = new Set();
-
   const set = new Set(nums2);
 
-  for (num of nums1) {
-    //   数组搜索值,复杂度O(n)
-    // set map -.has 复杂度O(1)
-    // if (nums2.includes(num)) {
-    //   result.add(num);
-    // }
-
+  for (const num of nums1) {
     if (set.has(num)) {
       result.add(num);
     }

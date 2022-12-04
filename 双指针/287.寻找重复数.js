@@ -10,9 +10,14 @@
  * @return {number}
  */
 var findDuplicate = function (nums) {
+  /**
+   * @author xun
+   * @method 快慢指针
+   * @timeComplexity O(n))
+   * @spaceComplexity O(1)
+   */
   let slow = 0;
   let fast = 0;
-
   do {
     slow = nums[slow];
     fast = nums[nums[fast]];
@@ -24,7 +29,6 @@ var findDuplicate = function (nums) {
     slow = nums[slow];
     fast = nums[fast];
   }
-
   return slow;
 };
 // @lc code=end
