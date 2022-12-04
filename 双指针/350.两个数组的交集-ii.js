@@ -11,12 +11,18 @@
  * @return {number[]}
  */
 var intersect = function (nums1, nums2) {
+  /**
+   * @author xun
+   * @method 排序+双指针
+   * @timeComplexity O(m log(m) + n log(n))
+   * @spaceComplexity O(min(m,n))
+   */
   nums1.sort((a, b) => a - b);
   nums2.sort((a, b) => a - b);
 
+  const result = [];
   let i = 0;
   let j = 0;
-  const result = [];
 
   while (i < nums1.length && j < nums2.length) {
     if (nums1[i] === nums2[j]) {
