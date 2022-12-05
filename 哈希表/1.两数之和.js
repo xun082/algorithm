@@ -12,7 +12,10 @@
  */
 var twoSum = function (nums, target) {
   /**
-   * @author 暴力破解
+   * @author xun
+   * @method 暴力破解
+   * @timeComplexity O(N*N)
+   * @spaceComplexity O(1)
    */
   // const length = nums.length;
   // for (let i = 0; i < length; i++) {
@@ -23,18 +26,19 @@ var twoSum = function (nums, target) {
   //   }
   // }
   /**
-   * @author 哈希表
+   * @author xun
+   * @method 哈希表
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
    */
-  const object = {};
+  const map = new Map();
   for (let i = 0; i < nums.length; i++) {
-    let num = nums[i];
-    // n是需要的值
-    let n = target - num;
+    let num = target - nums[i];
 
-    if (num in object) {
-      return [i, object[num]];
+    if (map.has(num)) {
+      return [map.get(num), i];
     } else {
-      object[n] = i;
+      map.set(nums[i], i);
     }
   }
 };
