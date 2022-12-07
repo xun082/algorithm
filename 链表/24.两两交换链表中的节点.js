@@ -34,17 +34,14 @@ var swapPairs = function (head) {
    * @timeComplexity O(n)
    * @spaceComplexity O(1)
    */
-
   const dummyHead = new ListNode(0);
   dummyHead.next = head;
-
   let temp = dummyHead;
 
   while (temp.next !== null && temp.next.next !== null) {
     const node1 = temp.next;
     const node2 = temp.next.next;
 
-    // 交换两个变量
     temp.next = node2;
     node1.next = node2.next;
     node2.next = node1;
