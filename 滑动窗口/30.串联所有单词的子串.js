@@ -11,6 +11,12 @@
  * @return {number[]}
  */
 var findSubstring = function (s, words) {
+  /**
+   * @author xun
+   * @method 滑动窗口
+   * @timeComplexity O(ls * n)
+   * @spaceComplexity O(m * n)
+   */
   const res = [];
   const m = words.length,
     n = words[0].length,
