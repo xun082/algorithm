@@ -11,16 +11,19 @@
  * @return {number}
  */
 var searchInsert = function (nums, target) {
+  /**
+   * @author xun
+   * @method 二分查找
+   * @timeComplexity O(log N)
+   * @spaceComplexity O(1)
+   */
   const length = nums.length;
-
   let left = 0;
   let right = length - 1;
   let ans = length;
 
   while (left <= right) {
-    // 取中间
-    let mid = ((right - left) >> 1) + left;
-
+    const mid = Math.floor(((right - left) >> 1) + left);
     if (target <= nums[mid]) {
       ans = mid;
       right = mid - 1;
@@ -28,7 +31,6 @@ var searchInsert = function (nums, target) {
       left = mid + 1;
     }
   }
-
   return ans;
 };
 // @lc code=end
