@@ -10,13 +10,16 @@
  * @return {number}
  */
 var lengthOfLastWord = function (s) {
-  if (s.length === 0) return 0;
-
+  /**
+   * @author xun
+   * @method  反向遍历
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
   let index = s.length - 1;
   while (s[index] === " ") {
     index--;
   }
-
   let wordLength = 0;
   while (index >= 0 && s[index] !== " ") {
     wordLength++;
