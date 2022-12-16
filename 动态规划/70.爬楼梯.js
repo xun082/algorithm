@@ -26,6 +26,7 @@ var climbStairs = function (n) {
   // }
   // return r;
 
+  // 通项公式
   const sqrt5 = Math.sqrt(5);
   const fib =
     Math.pow((1 + sqrt5) / 2, n + 1) - Math.pow((1 - sqrt5) / 2, n + 1);
