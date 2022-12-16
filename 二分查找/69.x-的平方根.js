@@ -10,11 +10,17 @@
  * @return {number}
  */
 var mySqrt = function (x) {
+  /**
+   * @author xun
+   * @method 二分查找
+   * @timeComplexity O(log N)
+   * @spaceComplexity O(1)
+   */
   let left = 0;
   let right = x;
 
   while (left <= right) {
-    let mid = (left + right) >> 1;
+    let mid = Math.floor(((right - left) >> 1) + left);
 
     if (mid * mid < x) {
       left = mid + 1;
@@ -24,6 +30,7 @@ var mySqrt = function (x) {
       return mid;
     }
   }
+
   return right;
 };
 // @lc code=end
