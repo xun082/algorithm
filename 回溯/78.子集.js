@@ -10,20 +10,10 @@
  * @return {number[][]}
  */
 var subsets = function (nums) {
-  // const result = [];
-  // const path = [];
-  // backtrack(0);
-  // return result;
-  // function backtrack(index) {
-  //   result.push([...path]);
-  //   for (let i = index; i < nums.length; i++) {
-  //     const num = nums[i];
-  //     path.push(num);
-  //     backtrack(i + 1); //找下一个数组
-  //     path.pop();
-  //   }
-  // }
-
+  /**
+   * @author xun
+   * @method 回溯
+   */
   const result = [];
 
   function backtrack(start, current) {
@@ -35,8 +25,8 @@ var subsets = function (nums) {
       current.pop();
     }
   }
-  backtrack(0, []);
 
+  backtrack(0, []);
   return result;
 };
 // @lc code=end
