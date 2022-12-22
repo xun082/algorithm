@@ -10,10 +10,15 @@
  * @return {number}
  */
 var longestConsecutive = function (nums) {
+  /**
+   * @author xun
+   * @method 哈希表
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
   const set = new Set();
-  for (const num of nums) {
-    set.add(num);
-  }
+
+  for (const num of nums) set.add(num);
 
   let length = 0;
 
