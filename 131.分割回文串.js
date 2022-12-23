@@ -17,28 +17,42 @@ function isPalindrome(s, l, r) {
 }
 
 var partition = function (s) {
+  /**
+   * @author xun
+   * @method 回溯+动态规划预处理
+   * @timeComplexity O(n*2**n)
+   * @spaceComplexity O(N**2)
+   */
+  const length = s.length;
+  const path = new Array(length)
+    .fill(0)
+    .map(() => new Array(length).fill(true));
+
   const result = [];
-  const path = [];
+  const ans = [];
 
-  backtrack(0);
-
-  return result;
-
-  // 从哪切
-  function backtrack(i) {
-    if (i >= s.length) {
-      result.push([...path]);
-      return;
-    }
-    for (let j = i; j < s.length; j++) {
-      //回文
-      if (!isPalindrome(s, i, j)) {
-        continue;
-      }
-      path.push(s.substr(i, j - i + 1));
-      backtrack(j + 1);
-      path.pop();
+  for (let i = length - 1; i >= 0; i--) {
+    for (let j = i + 1; j < length; j++) {
+      path[i][j] = s[i] === s[j] && path[i + 1][j - 1];
     }
   }
+
+  function dfs(x) {
+    if (x === length) {
+      result.push(ans.slice());
+      return;
+    }
+
+    for (let y = x; y < length; y++) {
+      if (path[x][y]) {
+        ans.push(s.slice(x, y + 1));
+        dfs(y + 1);
+        ans.pop();
+      }
+    }
+  }
+  dfs(0);
+
+  return result;
 };
 // @lc code=end
