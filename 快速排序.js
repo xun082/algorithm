@@ -57,14 +57,7 @@ const other = (array) => {
   return other(left).concat(midIndexVal, other(right));
 };
 
-const array = [5, 4, 3, 2, 1];
-console.log("原始array:", array);
-const newArr = quickSort(array);
-console.log("newArr:", newArr);
-
-console.log("------------");
-
-const otherArray = [5, 4, 3, 2, 1];
-console.log("原始array:", otherArray);
-const otherArr = other(otherArray);
-console.log("newArr:", otherArr);
+const array = [1, 20, 31, 58, 46, 5, 6, 7, 21, 32, 44, 59];
+console.time("s");
+console.log(...quickSort(array));
+console.timeEnd("s");

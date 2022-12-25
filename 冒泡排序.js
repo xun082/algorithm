@@ -7,11 +7,8 @@ const sort = (array) => {
         isSwap = true;
       }
     }
-    if (isSwap === false) {
-      // 如果一轮比较重没有发生过变换，则立即停止排序，因为此时剩余的数字一定已经有序了
-      break;
-    }
+    // 如果一轮比较重没有发生过变换，则立即停止排序，因为此时剩余的数字一定已经有序了
+    if (isSwap === false) break;
   }
-
   return array;
 };

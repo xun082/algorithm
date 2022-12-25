@@ -38,6 +38,7 @@ const heapSort = (array) => {
   return array;
 };
 
-const array = [2, 3, 5, 6, 9, 8, 7, 10];
-
-console.log(heapSort(array));
+const array = [1, 20, 31, 58, 46, 5, 6, 7, 21, 32, 44, 59];
+console.time("s");
+console.log(...heapSort(array));
+console.timeEnd("s");
