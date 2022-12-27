@@ -10,6 +10,13 @@
  * @return {number}
  */
 var singleNumber = function (nums) {
+  /**
+   * @author xun
+   * @method 位运算
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
+
   let result = 0;
 
   nums.forEach((num) => {
