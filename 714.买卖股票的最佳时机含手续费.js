@@ -11,25 +11,31 @@
  * @return {number}
  */
 var maxProfit = function (prices, fee) {
-  // 贪心
-  //   let result = 0;
-  //   let minPrice = prices[0];
-  //   for (let i = 0; i < prices.length; i++) {
-  //     if (prices[i] < minPrice) {
-  //       minPrice = prices[i];
-  //     }
-  //     if (prices[i] >= minPrice && prices[i] <= minPrice + fee) {
-  //       continue;
-  //     }
-  //     //   赚的
-  //     if (prices[i] > minPrice + fee) {
-  //       result += prices[i] - minPrice - fee;
-  //       minPrice = prices[i] - fee;
-  //     }
+  /**
+   * @author xun
+   * @method 贪心
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
+  // let result = 0;
+  // let minPrice = prices[0];
+  // for (let i = 0; i < prices.length; i++) {
+  //   if (prices[i] < minPrice) minPrice = prices[i];
+  //   if (prices[i] >= minPrice && prices[i] <= minPrice + fee) continue;
+  //   // 赚的
+  //   if (prices[i] > minPrice + fee) {
+  //     result += prices[i] - minPrice - fee;
+  //     minPrice = prices[i] - fee;
   //   }
-  //   return result;
-
-  // 动态规划
+  // }
+  // return result;
+  //
+  /**
+   * @author xun
+   * @method 动态规划
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
   const length = prices.length;
   let has = -prices[0] - fee;
   let notHas = 0;
