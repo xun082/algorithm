@@ -32,7 +32,7 @@ var minDistance = function (word1, word2) {
     for (let j = 1; j <= n; j++) {
       const str2 = word2[j - 1];
       if (str1 === str2) path[i][j] = path[i - 1][j - 1];
-      else path[i][j] = Math.min(path[i - 1][j], path[i][j - 1] + 1);
+      else path[i][j] = Math.min(path[i - 1][j], path[i][j - 1]) + 1;
     }
   }
 
