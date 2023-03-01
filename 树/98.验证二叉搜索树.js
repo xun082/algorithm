@@ -40,16 +40,15 @@ var isValidBST = function (root) {
    */
   const stack = [];
   let inOrder = -Infinity;
-  while (stack.length | (root !== null)) {
-    while (root !== null) {
+
+  while (stack.length || root) {
+    while (root) {
       stack.push(root);
       root = root.left;
     }
     root = stack.pop();
-    // 如果中序遍历得到的节点的值小于等于前一个 inOrder，说明不是二叉搜索树
-    if (root.val <= inOrder) {
-      return false;
-    }
+
+    if (root.val <= Infinity) return false;
     inOrder = root.val;
     root = root.right;
   }
