@@ -42,17 +42,13 @@ var maxDepth = function (root) {
     depth++;
     let length = queue.length;
 
-    while (length) {
+    while (length--) {
       // 删除最前面的一个,并返回
       let node = queue.shift();
 
-      if (node.left) {
-        queue.push(node.left);
-      }
-      if (node.right) {
-        queue.push(node.right);
-      }
-      length--;
+      node.left && queue.push(node.left);
+
+      node.right && queue.push(node.right);
     }
   }
 
