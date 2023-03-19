@@ -27,20 +27,23 @@ var merge = function (nums1, m, nums2, n) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  let p1 = 0;
-  let p2 = 0;
+  let p1 = m - 1;
+  let p2 = n - 1;
 
-  const result = new Array(m + n).fill(0);
-  var current = 0;
+  let current = 0;
+  let tail = m + n - 1;
 
-  while (p1 < m || p2 < n) {
-    if (p1 === m) current = nums2[p2++];
-    else if (p2 === n) current = nums1[p1++];
-    else if (nums1[p1] < nums2[p2]) current = nums1[p1++];
-    else current = nums2[p2++];
-
-    result[p1 + p2 - 1] = current;
+  while (p1 >= 0 || p2 >= 0) {
+    if (p1 === -1) {
+      current = nums2[p2--];
+    } else if (p2 === -1) {
+      current = nums1[p1--];
+    } else if (nums1[p1] > nums2[p2]) {
+      current = nums1[p1--];
+    } else {
+      current = nums2[p2--];
+    }
+    nums1[tail--] = current;
   }
-  for (let i = 0; i !== m + n; i++) nums1[i] = result[i];
 };
 // @lc code=end
