@@ -26,5 +26,4 @@ var maxProfit = function (prices) {
 
   return max;
 };
-
 // @lc code=end

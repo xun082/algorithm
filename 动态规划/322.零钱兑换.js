@@ -13,7 +13,7 @@
 var coinChange = function (coins, amount) {
   /**
    * @author xun
-   * @method 动态规划
+   * @method 动态规划 
    * @timeComplexity O(SN)其中 SS 是金额，nn 是面额数。
    * @spaceComplexity O(S)
    */

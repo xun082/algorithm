@@ -21,7 +21,7 @@ var minPathSum = function (grid) {
 
   if (n === 0 || m === 0) return 0;
 
-  const path = new Array(m).fill().map(() => new Array(m).fill(0));
+  const path = new Array(m).fill().map(() => new Array(n).fill(0));
 
   path[0][0] = grid[0][0];
 

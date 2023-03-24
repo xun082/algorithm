@@ -78,7 +78,7 @@ var trap = function (height) {
       left++;
     } else {
       result += rightMax - height[right];
-    right--;
+      right--;
     }
   }
 
