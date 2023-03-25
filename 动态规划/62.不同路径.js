@@ -17,17 +17,12 @@ var uniquePaths = function (m, n) {
    * @timeComplexity O(mn)
    * @spaceComplexity O(mn)
    */
-  // const path = new Array(m).fill(0).map(() => new Array(n).fill(0));
-  // for (let i = 0; i < m; i++) {
-  //   path[i][0] = 1;
-  // }
-  // for (let j = 0; j < n; j++) {
-  //   path[0][j] = 1;
-  // }
+  // const path = new Array(m).fill(0).map(() => new Array(n).fill(1));
+
   // for (let i = 1; i < m; i++) {
   //   for (let j = 1; j < n; j++) {
   //     path[i][j] = path[i - 1][j] + path[i][j - 1];
-  //   }
+  //   }  
   // }
   // return path[m - 1][n - 1];
   /**
