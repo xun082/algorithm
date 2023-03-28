@@ -20,12 +20,7 @@ var minDistance = function (word1, word2) {
   const m = word1.length;
   const n = word2.length;
 
-  const path = new Array();
-
-  for (let i = 0; i <= m; i++) {
-    const temp = new Array(n + 1).fill(0);
-    path.push(temp);
-  }
+  const path = new Array(m + 1).fill().map(() => new Array(n + 1).fill(0));
 
   for (let i = 0; i <= m; i++) path[i][0] = i;
   for (let i = 0; i <= n; i++) path[0][i] = i;

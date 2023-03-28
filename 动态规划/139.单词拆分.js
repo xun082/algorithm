@@ -18,7 +18,7 @@ var wordBreak = function (s, wordDict) {
    * @spaceComplexity O(N)
    */
   const length = s.length;
-  let path = new Array(s.length + 1).fill(false);
+  const path = new Array(length + 1).fill(false);
   // 空子前缀串默认能被拆分
   path[0] = true;
 

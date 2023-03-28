@@ -17,8 +17,8 @@ var largestRectangleArea = function (heights) {
    * @spaceComplexity O(N)
    */
   let result = 0;
-
   const stack = [-1];
+
   for (let i = 0; i < heights.length; i++) {
     while (stack.length > 1 && heights[stack[stack.length - 1]] >= heights[i]) {
       result = Math.max(
@@ -35,7 +35,6 @@ var largestRectangleArea = function (heights) {
       heights[stack.pop()] * (heights.length - stack[stack.length - 1] - 1)
     );
   }
-
   return result;
 };
 // @lc code=end
