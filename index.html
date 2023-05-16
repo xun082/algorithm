@@ -8,36 +8,50 @@
   </head>
   <body>
     <script>
-      var isValid = function (s) {
+      var wordBreak = function (s, wordDict) {
         /**
          * @author xun
-         * @method 栈
-         * @timeComplexity O(N)
-         * @spaceComplexity O(N)
+         * @method 回溯
+         * @timeComplexity O(n⋅2**n)
+         * @spaceComplexity O(n⋅2**n)
          */
-        const stack = [];
-        const map = {
-          "(": ")",
-          "[": "]",
-          "{": "}",
-        };
+        const map = new Map();
+        const wordBreaks = backtrack(s, s.length, new Set(wordDict), 0, map);
 
-        for (let i = 0; i < s.length; i++) {
-          const item = s[i];
-          if (map[item]) {
-            stack.push(item);
-          } else {
-            // 反括号的情况
-            if (item !== map[stack.pop()]) {
-              return false;
+        const breakList = [];
+
+        for (const wordBreak of wordBreaks) {
+          breakList.push(wordBreak.join(" "));
+        }
+
+        return breakList;
+      };
+      debugger;
+      wordBreak("catsanddog", ["cat", "cats", "and", "sand", "dog"]);
+      function backtrack(s, length, wordSet, index, map) {
+        if (map.has(index)) return map.get(index);
+
+        const wordBreaks = [];
+
+        if (index === length) wordBreaks.push([]);
+
+        for (let i = index + 1; i <= length; i++) {
+          const word = s.substring(index, i);
+
+          if (wordSet.has(word)) {
+            const nextWordBreaks = backtrack(s, length, wordSet, i, map);
+
+            for (const nextWordBreak of nextWordBreaks) {
+              const wordBreak = [word, ...nextWordBreak];
+              wordBreaks.push(wordBreak);
             }
           }
         }
-        // 栈为空则返回true
-        return !stack.length;
-      };
-      debugger;
-      isValid("([])");
+
+        map.set(index, wordBreaks);
+        return wordBreaks;
+      }
     </script>
   </body>
 </html>
+

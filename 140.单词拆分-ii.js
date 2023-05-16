@@ -18,9 +18,10 @@ var wordBreak = function (s, wordDict) {
    * @spaceComplexity O(n⋅2**n)
    */
   const map = new Map();
-  const wordBreaks = backTrack(s, s.length, new Set(wordDict), 0, map);
+  const wordBreaks = backtrack(s, s.length, new Set(wordDict), 0, map);
 
   const breakList = [];
+
   for (const wordBreak of wordBreaks) {
     breakList.push(wordBreak.join(" "));
   }
@@ -28,16 +29,18 @@ var wordBreak = function (s, wordDict) {
   return breakList;
 };
 
-function backTrack(s, length, wordSet, index, map) {
+function backtrack(s, length, wordSet, index, map) {
   if (map.has(index)) return map.get(index);
 
   const wordBreaks = [];
+
   if (index === length) wordBreaks.push([]);
 
   for (let i = index + 1; i <= length; i++) {
     const word = s.substring(index, i);
+
     if (wordSet.has(word)) {
-      const nextWordBreaks = backTrack(s, length, wordSet, i, map);
+      const nextWordBreaks = backtrack(s, length, wordSet, i, map);
 
       for (const nextWordBreak of nextWordBreaks) {
         const wordBreak = [word, ...nextWordBreak];
@@ -45,7 +48,9 @@ function backTrack(s, length, wordSet, index, map) {
       }
     }
   }
+
   map.set(index, wordBreaks);
   return wordBreaks;
 }
+
 // @lc code=end
