@@ -25,7 +25,6 @@ var numSquares = function (n) {
     }
     path[i] = min + 1;
   }
-
   return path[n];
 };
 // @lc code=end
