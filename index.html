@@ -8,50 +8,45 @@
   </head>
   <body>
     <script>
-      var wordBreak = function (s, wordDict) {
+      debugger;
+      var isValidSerialization = function (
+        preorder = "9,3,4,#,#,1,#,#,2,#,6,#,#"
+      ) {
         /**
          * @author xun
-         * @method 回溯
-         * @timeComplexity O(n⋅2**n)
-         * @spaceComplexity O(n⋅2**n)
+         * @method 栈
+         * @timeComplexity O(N)
+         * @spaceComplexity O(N)
          */
-        const map = new Map();
-        const wordBreaks = backtrack(s, s.length, new Set(wordDict), 0, map);
+        const n = preorder.length;
+        let index = 0;
+        const stack = [1];
 
-        const breakList = [];
+        while (index < n) {
+          if (!stack.length) return false;
 
-        for (const wordBreak of wordBreaks) {
-          breakList.push(wordBreak.join(" "));
-        }
-
-        return breakList;
-      };
-      debugger;
-      wordBreak("catsanddog", ["cat", "cats", "and", "sand", "dog"]);
-      function backtrack(s, length, wordSet, index, map) {
-        if (map.has(index)) return map.get(index);
-
-        const wordBreaks = [];
-
-        if (index === length) wordBreaks.push([]);
-
-        for (let i = index + 1; i <= length; i++) {
-          const word = s.substring(index, i);
-
-          if (wordSet.has(word)) {
-            const nextWordBreaks = backtrack(s, length, wordSet, i, map);
-
-            for (const nextWordBreak of nextWordBreaks) {
-              const wordBreak = [word, ...nextWordBreak];
-              wordBreaks.push(wordBreak);
+          if (preorder[index] === ",") {
+            index++;
+          } else if (preorder[index] === "#") {
+            stack[stack.length - 1]--;
+            if (stack[stack.length - 1] === 0) stack.pop();
+            index++;
+          } else {
+            while (index < n && preorder[index] !== ",") {
+              index++;
             }
+            stack[stack.length - 1]--;
+            if (stack[stack.length - 1] === 0) {
+              stack.pop();
+            }
+            stack.push(2);
           }
         }
 
-        map.set(index, wordBreaks);
-        return wordBreaks;
-      }
+        return stack.length === 0;
+      };
+
+      isValidSerialization();
     </script>
   </body>
 </html>
-
