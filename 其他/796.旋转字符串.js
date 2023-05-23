@@ -11,9 +11,12 @@
  * @return {boolean}
  */
 var rotateString = function (s, goal) {
-  if (s.length !== goal.length) return false;
-
-  const str = s + s;
-  return str.includes(goal);
+  /**
+   * @author xun
+   * @method 搜索子字符串
+   * @timeComplexity O(N)
+   * @spaceComplexity O(N)
+   */
+  return s.length === goal.length && (s + s).indexOf(goal) !== -1;
 };
 // @lc code=end
