@@ -8,9 +8,10 @@
   </head>
   <body>
     <script>
-      console.log(Object.__proto__ === Function.prototype);
-      console.log(Object.prototype.__proto__);
-      console.log(Object.prototype, Function.__proto__);
+      const div = document.getElementsByClassName("text_nor");
+      for (let index = 0; index < div.length; index++) {
+        div[index].value = 100;
+      }
     </script>
   </body>
 </html>
