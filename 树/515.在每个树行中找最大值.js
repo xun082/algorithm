@@ -52,29 +52,22 @@ var largestValues = function (root) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
-  if (!root) return [];
-
   const result = [];
   const queue = [root];
 
+  if (!root) return result;
+
   while (queue.length) {
-    let length = queue.length;
+    let n = queue.length;
+    let maxValue = -Infinity;
 
-    let maxValue = -Number.MAX_VALUE;
+    while (n--) {
+      const node = queue.shift();
+      maxValue = Math.max(maxValue, node.val);
 
-    while (length > 0) {
-      length--;
-      const temp = queue.shift();
-      maxValue = Math.max(maxValue, temp.val);
-
-      if (temp.left) {
-        queue.push(temp.left);
-      }
-      if (temp.right) {
-        queue.push(temp.right);
-      }
+      node.left && queue.push(node.left);
+      node.right && queue.push(node.right);
     }
-    result.push(maxValue);
   }
 
   return result;

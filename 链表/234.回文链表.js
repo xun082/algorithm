@@ -75,7 +75,7 @@ var isPalindrome = function (head) {
 const isPalindrome = function (head) {
   /**
    * @author xun
-   * @method 头尾同时遍历
+     * @method 头尾同时遍历
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */

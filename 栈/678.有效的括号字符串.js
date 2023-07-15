@@ -27,14 +27,12 @@ var checkValidString = function (s) {
       maxCount++;
     } else if (c === ")") {
       minCount = Math.max(minCount - 1, 0);
-      maxCount--;
-      if (maxCount < 0) return false;
+      if (--maxCount < 0) return false;
     } else {
       minCount = Math.max(minCount - 1, 0);
       maxCount++;
     }
   }
-
   return minCount === 0;
 };
 // @lc code=end

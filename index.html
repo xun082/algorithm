@@ -8,10 +8,32 @@
   </head>
   <body>
     <script>
-      const div = document.getElementsByClassName("text_nor");
-      for (let index = 0; index < div.length; index++) {
-        div[index].value = 100;
-      }
+      var longestPalindrome = function (s) {
+        debugger;
+        const length = s.length;
+        if (length < 2) return s;
+
+        let max = "";
+
+        for (let i = 0; i < length; i++) {
+          helper(i, i);
+          helper(i, i + 1);
+        }
+
+        function helper(left, right) {
+          while (left >= 0 && right < length && s[left] === s[right]) {
+            right++;
+            left--;
+          }
+          const maxStr = s.slice(left + 1, right);
+
+          if (maxStr.length > max.length) max = maxStr;
+        }
+
+        return max;
+      };
+
+      longestPalindrome("babad");
     </script>
   </body>
 </html>

@@ -19,31 +19,30 @@
  * @return {ListNode}
  */
 var reverseBetween = function (head, left, right) {
-  // 哨兵节点
-  let dummy = {
-    next: head,
-  };
+  /**
+   * @author xun
+   * @method 穿针引线
+   * @timeComplexity O(N)
+   * @spaceComplexity O(1)
+   */
+  const dummyHead = new ListNode(0);
+  dummyHead.next = head;
 
-  let temp = dummy;
+  let previous = dummyHead;
 
   for (let i = 0; i < left - 1; i++) {
-    temp = temp.next;
+    previous = previous.next;
   }
-  // 走到left的位置
-  let previous = temp.next;
 
   let current = previous.next;
 
-  for (let j = 0; j < right - left; j++) {
-    const next = current.next;
-    current.next = previous;
-    previous = current;
-    current = next;
+  for (let i = 0; i < right - left; i++) {
+    const node = current.next;
+    current.next = node.next;
+    node.next = previous.next;
+    previous.next = node;
   }
 
-  temp.next.next = current;
-  temp.next = previous;
-
-  return dummy.next;
+  return dummyHead.next;
 };
 // @lc code=end

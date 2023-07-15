@@ -74,18 +74,10 @@ var addTwoNumbers = function (l1, l2) {
 
     current = current.next;
 
-    if (l1) {
-      l1 = l1.next;
-    }
+    if (l1) l1 = l1.next;
+    if (l2) l2 = l2.next;
 
-    if (l2) {
-      l2 = l2.next;
-    }
-
-    // 如果最后溢出1的话,就添加巍峨1的节点即可
-    if (carry > 0) {
-      current.next = new ListNode(carry);
-    }
+    if (carry > 0) current.next = new ListNode(carry);
   }
 
   return dummy.next;

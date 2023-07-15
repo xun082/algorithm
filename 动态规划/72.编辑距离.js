@@ -28,11 +28,10 @@ var minDistance = function (word1, word2) {
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
       if (word1[i - 1] === word2[j - 1]) {
-        path[i][j] =
-          1 + Math.min(path[i - 1][j], path[i][j - 1], path[i - 1][j - 1] - 1);
+        path[i][j] = path[i - 1][j - 1];
       } else {
         path[i][j] =
-          1 + Math.min(path[i - 1][j], path[i][j - 1], path[i - 1][j - 1]);
+          Math.min(path[i - 1][j], path[i][j - 1], path[i - 1][j - 1]) + 1;
       }
     }
   }

@@ -1,4 +1,4 @@
-function bucketSort(arr) {
+  function bucketSort(arr) {
   let max = Math.max(...arr);
   let min = Math.min(...arr);
   let bucketNum = parseInt((max - min) / arr.length) + 1;

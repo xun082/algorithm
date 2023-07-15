@@ -27,7 +27,7 @@ var maxArea = function (height) {
     vol = (right - left) * Math.min(height[left], height[right]);
 
     result = Math.max(result, vol);
-
+   
     if (height[left] <= height[right]) left++;
     else right--;
   }
