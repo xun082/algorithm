@@ -16,19 +16,21 @@ var findDuplicate = function (nums) {
    * @timeComplexity O(n))
    * @spaceComplexity O(1)
    */
-  let slow = 0;
-  let fast = 0;
-  do {
+  let slow = nums[0];
+  let fast = nums[nums[0]];
+``
+  // 第一次相遇
+  while (slow !== fast) {
     slow = nums[slow];
     fast = nums[nums[fast]];
-  } while (slow !== fast);
+  }
 
   slow = 0;
-
   while (slow !== fast) {
     slow = nums[slow];
     fast = nums[fast];
   }
+
   return slow;
 };
 // @lc code=end

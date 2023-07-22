@@ -20,13 +20,15 @@ var moveZeroes = function (nums) {
    * @spaceComplexity O(1)
    */
   let left = 0;
-  const length = nums.length;
+  let right = 0;
+  const n = nums.length;
 
-  for (let right = 0; right < length; right++) {
+  while (right < n) {
     if (nums[right]) {
-      [nums[right], nums[left]] = [nums[left], nums[right]];
+      [nums[left], nums[right]] = [nums[right], nums[left]];
       left++;
     }
+    right++;
   }
   return nums;
 };

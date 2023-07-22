@@ -36,7 +36,7 @@ var compress = function (chars) {
       if (num > 1) {
         const anchor = write;
         while (num > 0) {
-          chars[write++] = String(num % 10);
+          chars[write++] = "" + (num % 10);
           num = Math.floor(num / 10);
         }
         reverse(chars, anchor, write - 1);

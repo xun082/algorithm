@@ -16,19 +16,23 @@ var sortedSquares = function (nums) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
-  let start = 0;
-  let end = nums.length - 1;
-  let result = [...nums];
+  let left = 0;
+  let right = nums.length - 1;
+  const n = right;
+  const result = new Array(n + 1);
 
-  for (let i = end; i >= 0; i--) {
-    if (nums[start] * nums[start] > nums[end] * nums[end]) {
-      result[i] = nums[start] * nums[start];
-      start++;
+  for (let i = 0; i <= n; i++) {
+    const rightAbs = nums[right] * nums[right];
+    const leftAbs = nums[left] * nums[left];
+    if (leftAbs > rightAbs) {
+      result[n - i] = leftAbs;
+      left++;
     } else {
-      result[i] = nums[end] * nums[end];
-      end--;
+      result[n - i] = rightAbs;
+      right--;
     }
   }
+
   return result;
 };
 // @lc code=end

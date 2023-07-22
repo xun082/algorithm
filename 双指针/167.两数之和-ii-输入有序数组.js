@@ -17,18 +17,17 @@ var twoSum = function (numbers, target) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  if (numbers === null) return null;
-
+  if (!numbers) return numbers;
   let left = 0;
   let right = numbers.length - 1;
 
   while (left < right) {
-    let sum = numbers[left] + numbers[right];
-    if (sum === target) return [left + 1, right + 1];
-    else if (sum < target) left++;
-    else right--;
-  }
+    const sum = numbers[left] + numbers[right];
 
+    if (sum === target) return [left + 1, right + 1];
+    else if (sum > target) right--;
+    else left++;
+  }
   return numbers;
 };
 // @lc code=end
