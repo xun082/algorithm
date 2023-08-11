@@ -19,9 +19,9 @@ var maxProfit = function (prices) {
   let min = prices[0];
   let max = 0;
 
-  for (let i = 0; i < prices.length; i++) {
-    max = Math.max(max, prices[i] - min);
-    min = Math.min(prices[i], min);
+  for (const p of prices) {
+    max = Math.max(max, p - min);
+    min = Math.min(p, min);
   }
 
   return max;

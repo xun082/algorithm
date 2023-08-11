@@ -16,14 +16,14 @@ var removeDuplicates = function (nums) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  const length = nums.length;
+  const n = nums.length;
 
-  if (length <= 2) return length;
+  if (n <= 2) return n;
 
   let slow = 2;
   let fast = 2;
 
-  while (fast < length) {
+  while (fast < n) {
     if (nums[slow - 2] !== nums[fast]) {
       nums[slow] = nums[fast];
       slow++;

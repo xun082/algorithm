@@ -18,14 +18,12 @@ var checkValidString = function (s) {
    */
   let minCount = 0;
   let maxCount = 0;
-  const n = s.length;
 
-  for (let i = 0; i < n; i++) {
-    const c = s[i];
-    if (c === "(") {
-      minCount++;
+  for (const char of s) {
+    if (char === "(") {
       maxCount++;
-    } else if (c === ")") {
+      minCount++;
+    } else if (char === ")") {
       minCount = Math.max(minCount - 1, 0);
       if (--maxCount < 0) return false;
     } else {

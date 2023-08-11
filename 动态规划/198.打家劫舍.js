@@ -16,7 +16,7 @@ var rob = function (nums) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  let path = [nums[0], Math.max(nums[0], nums[1])];
+  const path = [nums[0], Math.max(nums[0], nums[1])];
 
   for (let i = 2; i < nums.length; i++) {
     path[i] = Math.max(path[i - 1], path[i - 2] + nums[i]);

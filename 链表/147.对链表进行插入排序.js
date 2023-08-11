@@ -24,20 +24,22 @@ var insertionSortList = function (head) {
    * @spaceComplexity O(1)
    */
 
-  if (head === null) return head;
+  if (!head) return head;
 
-  let next = head;
+  let current = head;
   const result = new ListNode(0);
 
-  while (next !== null) {
+  while (current !== null) {
     let temp = result;
-    while (temp.next !== null && temp.next.val < next.val) {
+
+    while (temp.next !== null && temp.next.val < current.val) {
       temp = temp.next;
     }
-    
+
     let t = temp.next;
-    temp.next = next;
-    next = next.next;
+    temp.next = current;
+    current = current.next;
+
     temp.next.next = t;
   }
 

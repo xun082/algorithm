@@ -41,18 +41,17 @@ var isValidBST = function (root) {
   const stack = [];
   let inOrder = -Infinity;
 
-  while (stack.length || root !== null) {
+  while (root !== null || stack.length) {
     while (root !== null) {
       stack.push(root);
       root = root.left;
     }
-    root = stack.pop();
 
+    root = stack.pop();
     if (root.val <= inOrder) return false;
     inOrder = root.val;
     root = root.right;
   }
-
   return true;
 };
 // @lc code=end
