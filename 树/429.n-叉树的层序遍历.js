@@ -25,26 +25,26 @@ var levelOrder = function (root) {
    * @spaceComplexity O(N)
    */
 
-  if (!root) return [];
+  const result = [];
+  const stack = [root];
 
-  const ans = [];
-  const queue = [root];
+  if (!root) return result;
 
-  while (queue.length) {
-    const count = queue.length;
+  while (stack.length) {
+    const n = stack.length;
     const level = [];
 
-    for (let i = 0; i < count; i++) {
-      const current = queue.shift();
-      level.push(current.val);
+    for (let i = 0; i < n; i++) {
+      const node = stack.shift();
+      level.push(node.val);
 
-      for (const child of current.children) {
-        queue.push(child);
+      for (const child of node.children) {
+        stack.push(child);
       }
     }
-    ans.push(level);
+    result.push(level);
   }
 
-  return ans;
+  return result;
 };
 // @lc code=end

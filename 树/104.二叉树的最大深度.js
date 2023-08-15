@@ -33,25 +33,22 @@ var maxDepth = function (root) {
    * @spaceComplexity O(N)
    */
 
-  if (root === null) return 0;
+  if (!root) return 0;
 
   const queue = [root];
   let depth = 0;
 
-  while (queue.length !== 0) {
+  while (queue.length) {
     depth++;
-    let length = queue.length;
+    let n = queue.length;
 
-    while (length--) {
-      // 删除最前面的一个,并返回
-      let node = queue.shift();
+    while (n--) {
+      const node = queue.shift();
 
       node.left && queue.push(node.left);
-
       node.right && queue.push(node.right);
     }
   }
-
   return depth;
 };
 // @lc code=end

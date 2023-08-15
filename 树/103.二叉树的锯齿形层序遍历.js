@@ -27,33 +27,25 @@ var zigzagLevelOrder = function (root) {
   if (!root) return [];
 
   const result = [];
-  const nodeQueue = [root];
+  const queue = [root];
 
   let isOrderLeft = true;
 
-  while (nodeQueue.length) {
-    let levelList = [];
+  while (queue.length) {
+    let n = queue.length;
+    const current = [];
 
-    const size = nodeQueue.length;
-    for (let i = 0; i < size; i++) {
-      const node = nodeQueue.shift();
-      if (isOrderLeft) {
-        // 向后面插入
-        levelList.push(node.val);
-      } else {
-        // 向前面插入
-        levelList.unshift(node.val);
-      }
+    while (n > 0) {
+      const node = queue.shift();
 
-      if (node.left !== null) {
-        nodeQueue.push(node.left);
-      }
-      if (node.right !== null) {
-        nodeQueue.push(node.right);
-      }
+      if (isOrderLeft) current.push(node.val);
+      else current.unshift(node.val);
+
+      node.left && queue.push(node.left);
+      node.right && queue.push(node.right);
+      n--;
     }
-
-    result.push(levelList);
+    result.push(current);
     isOrderLeft = !isOrderLeft;
   }
   return result;

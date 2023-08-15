@@ -53,23 +53,23 @@ var largestValues = function (root) {
    * @spaceComplexity O(N)
    */
   const result = [];
-  const queue = [root];
+  const stack = [root];
 
   if (!root) return result;
 
-  while (queue.length) {
-    let n = queue.length;
-    let maxValue = -Infinity;
-
+  while (stack.length) {
+    let n = stack.length;
+    let max = -Number.MAX_VALUE;
     while (n--) {
-      const node = queue.shift();
-      maxValue = Math.max(maxValue, node.val);
+      const node = stack.shift();
 
-      node.left && queue.push(node.left);
-      node.right && queue.push(node.right);
+      max = Math.max(max, node.val);
+
+      node.left && stack.push(node.left);
+      node.right && stack.push(node.right);
     }
+    result.push(max);
   }
-
   return result;
 };
 // @lc code=end

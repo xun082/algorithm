@@ -40,22 +40,24 @@ var averageOfLevels = function (root) {
    * @spaceComplexity O(N)
    */
   const result = [];
-  if (root === null) return result;
+  const stack = [root];
 
-  const queue = [root];
+  if (!root) return result;
 
-  while (queue.length) {
-    const length = queue.length;
+  while (stack.length) {
+    const n = stack.length;
 
     let sum = 0;
-    for (let i = 0; i < length; i++) {
-      const node = queue.shift();
+
+    for (let i = 0; i < n; i++) {
+      const node = stack.shift();
 
       sum += node.val;
-      node.left && queue.push(node.left);
-      node.right && queue.push(node.right);
+
+      node.left && stack.push(node.left);
+      node.right && stack.push(node.right);
     }
-    result.push(sum / length);
+    result.push(sum / n);
   }
   return result;
 };

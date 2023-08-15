@@ -25,11 +25,33 @@ var hasPathSum = function (root, targetSum) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
-  if (root === null) return false;
-  if (root.left === null && root.right === null) return root.val === targetSum;
+  // if (root === null) return false;
+  // if (root.left === null && root.right === null) return root.val === targetSum;
 
-  const offset = targetSum - root.val;
+  // const offset = targetSum - root.val;
 
-  return hasPathSum(root.left, offset) || hasPathSum(root.right, offset);
+  // return hasPathSum(root.left, offset) || hasPathSum(root.right, offset);
+
+  if (!root) return false;
+
+  const stack = [root];
+  const result = [0];
+
+  while (stack.length) {
+    const node = stack.shift();
+    let value = result.shift();
+    value += node.val;
+    if (!node.left && !node.right && value === targetSum) return true;
+
+    if (node.left) {
+      stack.push(node.left);
+      result.push(value);
+    }
+    if (node.right) {
+      stack.push(node.right);
+      result.push(value);
+    }
+  }
+  return false;
 };
 // @lc code=end

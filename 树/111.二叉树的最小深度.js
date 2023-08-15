@@ -47,17 +47,19 @@ var minDepth = function (root) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
-  if (root === null) return 0;
+  if (!root) return 0;
 
   const stack = [root];
   let index = 0;
 
   while (true) {
-    let size = stack.length;
+    let n = stack.length;
     index++;
-    while (size--) {
-      let node = stack.shift();
-      if (node.left === null && node.right === null) return index;
+
+    while (n--) {
+      const node = stack.shift();
+
+      if (!node.left && !node.right) return index;
 
       node.left && stack.push(node.left);
       node.right && stack.push(node.right);

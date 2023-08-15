@@ -13,7 +13,7 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
-/** 
+/**
  * @param {TreeNode} root
  * @return {number[]}
  */
@@ -25,16 +25,17 @@ var postorderTraversal = function (root) {
    * @spaceComplexity O(N)
    */
   const result = [];
+  const stack = [root];
+  if (!root) return result;
 
-  function dfs(root) {
-    if (root === null) return [];
+  while (stack.length) {
+    const node = stack.pop();
 
-    dfs(root.left);
-    dfs(root.right);
-    result.push(root.val);
+    result.unshift(node.val);
+    node.left && stack.push(node.left);
+
+    node.right && stack.push(node.right);
   }
-  dfs(root);
-
   return result;
 };
 // @lc code=end

@@ -25,26 +25,22 @@ var rightSideView = function (root) {
    * @spaceComplexity O(N)
    */
   const result = [];
+  const stack = [root];
 
-  const queue = [root];
+  if (!root) return result;
 
-  if (root === null) return result;
+  while (stack.length) {
+    let n = stack.length;
 
-  while (queue.length) {
-    let length = queue.length;
+    while (n--) {
+      const node = stack.shift();
 
-    while (length--) {
-      let node = queue.shift();
+      if (n === 0) result.push(node.val);
 
-      if (length === 0) {
-        result.push(node.val);
-      }
-
-      node.left && queue.push(node.left);
-      node.right && queue.push(node.right);
+      node.left && stack.push(node.left);
+      node.right && stack.push(node.right);
     }
   }
-
   return result;
 };
 // @lc code=end

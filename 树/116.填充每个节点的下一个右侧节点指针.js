@@ -26,26 +26,23 @@ var connect = function (root) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  if (root === null) return root;
+  if (!root) return root;
 
-  // 从根节点开始
-  let leftmost = root;
+  const queue = [root];
 
-  while (leftmost.left !== null) {
-    // 遍历这一层节点组织成的链表,为下一层的节点更新next 指针
-    let head = leftmost;
+  while (queue.length) {
+    const n = queue.length;
+    let i = 0;
+    while (i < n) {
+      const node = queue.shift();
 
-    while (head !== null) {
-      head.left.next = head.right;
+      if (i < n - 1) node.next = queue[0];
 
-      if (head.next !== null) {
-        head.right.next = head.next.left;
-      }
+      node.left && queue.push(node.left);
+      node.right && queue.push(node.right);
 
-      head = head.next;
+      i++;
     }
-    // 去下一层的最左节点
-    leftmost = leftmost.left;
   }
   return root;
 };
