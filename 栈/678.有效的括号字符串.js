@@ -16,21 +16,22 @@ var checkValidString = function (s) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  let minCount = 0;
-  let maxCount = 0;
+  let max = 0;
+  let min = 0;
 
   for (const char of s) {
     if (char === "(") {
-      maxCount++;
-      minCount++;
+      max++;
+      min++;
     } else if (char === ")") {
-      minCount = Math.max(minCount - 1, 0);
-      if (--maxCount < 0) return false;
+      min = Math.max(min - 1, 0);
+      if (--max < 0) return false;
     } else {
-      minCount = Math.max(minCount - 1, 0);
-      maxCount++;
+      min = Math.max(min - 1, 0);
+      max++;
     }
   }
-  return minCount === 0;
+
+  return min === 0;
 };
 // @lc code=end

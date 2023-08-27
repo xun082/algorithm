@@ -16,15 +16,15 @@ var lengthOfLastWord = function (s) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  let index = s.length - 1;
-  while (s[index] === " ") {
-    index--;
-  }
-  let wordLength = 0;
-  while (index >= 0 && s[index] !== " ") {
-    wordLength++;
-    index--;
-  }
-  return wordLength;
+  let end = s.length - 1;
+
+  while (end >= 0 && s[end] === " ") end--;
+
+  if (end < 0) return 0;
+
+  let start = end;
+  while (start >= 0 && s[start] !== " ") start--;
+
+  return end - start;
 };
 // @lc code=end

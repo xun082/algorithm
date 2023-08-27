@@ -16,22 +16,20 @@ var reverseWords = function (s) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
-  const stack = [];
-  // 是否为单词
-  let flag = false;
-  let end = s.length;
+  const words = [];
+  let start = s.length - 1;
 
-  for (let i = end - 1; i >= 0; i--) {
-    // 特殊处理 i===0 && s[0] !==' '这种情况
-    if (i === 0 && s[0] !== " ") stack.push(s.slice(i, end));
-    else {
-      if (s[i] === " ") {
-        if (flag) stack.push(s.slice(i + 1, end));
-        flag = false;
-        end = i;
-      } else flag = true;
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] === " ") {
+      if (i < start) {
+        words.push(s.slice(i + 1, start + 1));
+      }
+      start = i - 1;
+    } else if (i === 0) {
+      words.push(s.slice(i, start + 1));
     }
   }
-  return stack.join(" ");
+
+  return words.join(" ");
 };
 // @lc code=end

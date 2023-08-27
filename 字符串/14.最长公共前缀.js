@@ -16,20 +16,18 @@ var longestCommonPrefix = function (strs) {
    * @timeComplexity O(MN)
    * @spaceComplexity O(1)
    */
-  if (strs === null || strs.length === 0) return "";
+  if (!strs.length) return "";
 
-  let length = strs[0].length;
-  let count = strs.length;
+  let ans = strs[0];
 
-  for (let i = 0; i < length; i++) {
-    let c = strs[0].charAt(i);
-    for (let j = 1; j < count; j++) {
-      if (i === strs[j].length || strs[j].charAt(i) !== c) {
-        return strs[0].substring(0, i);
-      }
+  for (let i = 1; i < strs.length; i++) {
+    let j = 0;
+    while (j < ans.length && ans[j] === strs[i][j]) {
+      j++;
     }
+    ans = ans.substring(0, j);
+    if (ans === "") return ans;
   }
-
-  return strs[0];
+  return ans;
 };
 // @lc code=end
