@@ -34,9 +34,9 @@ var swapPairs = function (head) {
    * @timeComplexity O(n)
    * @spaceComplexity O(1)
    */
-  const dummyHead = new ListNode(0);
-  dummyHead.next = head;
-  let temp = dummyHead;
+  const dummy = new ListNode(0);
+  dummy.next = head;
+  let temp = dummy;
 
   while (temp.next !== null && temp.next.next !== null) {
     const node1 = temp.next;
@@ -48,6 +48,6 @@ var swapPairs = function (head) {
     temp = node1;
   }
 
-  return dummyHead.next;
+  return dummy.next;
 };
 // @lc code=end
