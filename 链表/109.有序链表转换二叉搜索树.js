@@ -51,7 +51,10 @@ var sortedListToBST = function (head) {
    * @spaceComplexity O(n)
    */
 
-  const node = {};
+  const node = {
+    left: null,
+    right: null,
+  };
 
   if (!head) return null;
 
@@ -68,16 +71,11 @@ var sortedListToBST = function (head) {
 
   node.val = slow.val;
 
-  // 因为下面有if 判断，所以先给left置一个null，否则不满足TreeNode type
-  node.left = null;
-
-  // 递归左节点
   if (last !== slow) {
     last.next = null;
     node.left = sortedListToBST(head);
   }
 
-  // 递归又节点
   node.right = sortedListToBST(slow.next);
 
   return node;

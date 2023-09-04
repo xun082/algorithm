@@ -25,10 +25,10 @@ var reverseBetween = function (head, left, right) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  const dummyHead = new ListNode(0);
-  dummyHead.next = head;
+  const dummy = new ListNode(0);
 
-  let previous = dummyHead;
+  dummy.next = head;
+  let previous = dummy;
 
   for (let i = 0; i < left - 1; i++) {
     previous = previous.next;
@@ -43,6 +43,6 @@ var reverseBetween = function (head, left, right) {
     previous.next = node;
   }
 
-  return dummyHead.next;
+  return dummy.next;
 };
 // @lc code=end

@@ -40,30 +40,27 @@ var detectCycle = function (head) {
    * @spaceComplexity O(1)
    */
 
-  if (head === null) return null;
+  if (!head) return null;
 
-  let fast = head;
   let slow = head;
+  let fast = head;
 
-  while (fast !== null) {
+  while (fast && fast.next) {
     slow = slow.next;
-    if (fast.next !== null) {
-      fast = fast.next.next;
-    } else {
-      // 无环
-      return null;
-    }
-    // 如果相同,证明有还
+
+    fast = fast.next.next;
+
     if (fast === slow) {
       let node = head;
+
       while (node !== slow) {
-        // 查找下标
         node = node.next;
         slow = slow.next;
       }
       return node;
     }
   }
+
   return null;
 };
 // @lc code=end
