@@ -36,11 +36,11 @@ var insertionSortList = function (head) {
       temp = temp.next;
     }
 
-    let t = temp.next;
+    const node = temp.next;
     temp.next = current;
     current = current.next;
 
-    temp.next.next = t;
+    temp.next.next = node;
   }
 
   return result.next;

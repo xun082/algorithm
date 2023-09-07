@@ -34,11 +34,11 @@ var removeElements = function (head, val) {
    * @spaceComplexity O(1)
    */
 
-  const dummyHead = new ListNode(0);
+  const dummy = new ListNode(0);
 
-  dummyHead.next = head;
+  dummy.next = head;
 
-  let temp = dummyHead;
+  let temp = dummy;
 
   while (temp.next !== null) {
     if (temp.next.val === val) {
@@ -47,6 +47,6 @@ var removeElements = function (head, val) {
       temp = temp.next;
     }
   }
-  return dummyHead.next;
+  return dummy.next;
 };
 // @lc code=end
