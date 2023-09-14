@@ -32,7 +32,7 @@ var isSubPath = function (head, root) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  if (head === null) return true;
+  if (!head) return true;
   if (root === null) return false;
 
   function check(head, root) {
@@ -45,9 +45,7 @@ var isSubPath = function (head, root) {
     );
   }
 
-  if (head.val === root.val) {
-    if (check(head, root)) return true;
-  }
+  if (head.val === root.val && check(head, root)) return true;
 
   return isSubPath(head, root.left) || isSubPath(head, root.right);
 };

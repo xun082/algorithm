@@ -24,15 +24,12 @@ var oddEvenList = function (head) {
    * @spaceComplexity O(1)
    */
 
-  if (head === null) {
-    return head;
-  }
+  if (!head) return head;
 
-  let evenHead = head.next; // 偶节点
-  let odd = head; // 奇节点
-  let even = evenHead; // 偶节点
+  let evenHead = head.next;
+  let odd = head;
+  let even = evenHead;
 
-  // 分出奇数链表和偶数链表
   while (even !== null && even.next !== null) {
     odd.next = even.next;
     odd = odd.next;
@@ -40,9 +37,8 @@ var oddEvenList = function (head) {
     even = even.next;
   }
 
-  // 合并
   odd.next = evenHead;
 
-  return head;
+  return head;  
 };
 // @lc code=end
