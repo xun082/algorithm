@@ -10,31 +10,22 @@
  * @return {boolean}
  */
 var isValid = function (s) {
-  /**
-   * @author xun
-   * @method 栈
-   * @timeComplexity O(N)
-   * @spaceComplexity O(N)
-   */
   const stack = [];
   const map = {
     "(": ")",
-    "[": "]",
     "{": "}",
+    "[": "]",
   };
 
-  for (let i = 0; i < s.length; i++) {
-    const item = s[i];
+  for (const item of s) {
     if (map[item]) {
       stack.push(item);
     } else {
-      // 反括号的情况
-      if (item !== map[stack.pop()]) {
-        return false;
-      }
+      if (item !== map[stack.pop()]) return false;
     }
   }
-  // 栈为空则返回true
+
   return !stack.length;
 };
+
 // @lc code=end

@@ -21,17 +21,16 @@ var checkValidString = function (s) {
 
   for (const char of s) {
     if (char === "(") {
-      max++;
       min++;
+      max++;
     } else if (char === ")") {
       min = Math.max(min - 1, 0);
+
       if (--max < 0) return false;
     } else {
       min = Math.max(min - 1, 0);
       max++;
     }
   }
-
-  return min === 0;
 };
 // @lc code=end

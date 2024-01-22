@@ -41,20 +41,23 @@ var deleteDuplicates = function (head) {
    * @spaceComplexity O(1)
    */
   if (!head) return head;
+
   const dummy = new ListNode(0, head);
+
   let current = dummy;
+
   while (current.next && current.next.next) {
     if (current.next.val === current.next.next.val) {
       const x = current.next.val;
-      // 如果连续相同,遍历
-      while (current.next && current.next.val === x) {
-        current.next = current.next.next; //删除链表
+
+      while (current.next && current.next.next === x) {
+        current.next = current.next.next;
       }
     } else {
       current = current.next;
     }
   }
-  // 前面有一个哨兵节点
-  return dummy.next;
+
+  return dummy.next;  
 };
 // @lc code=end

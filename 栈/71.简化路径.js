@@ -18,14 +18,15 @@ var simplifyPath = function (path) {
    */
   const names = path.split("/");
   const stack = [];
+
   for (const name of names) {
-    if (name == "..") {
+    if (name === "..") {
       if (stack.length) stack.pop();
-    } else if (name.length && name !== ".") {
+    } else if (name && name !== ".") {
       stack.push(name);
     }
   }
 
-  return "/" + stack.join("/");
+  return stack.join("/");
 };
 // @lc code=end

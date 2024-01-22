@@ -27,6 +27,7 @@ var isValidSerialization = function (preorder) {
       index++;
     } else if (preorder[index] === "#") {
       stack[stack.length - 1]--;
+
       if (stack[stack.length - 1] === 0) stack.pop();
       index++;
     } else {
@@ -34,10 +35,10 @@ var isValidSerialization = function (preorder) {
         index++;
       }
       stack[stack.length - 1]--;
+
       if (stack[stack.length - 1] === 0) {
         stack.pop();
       }
-      stack.push(2);
     }
   }
 

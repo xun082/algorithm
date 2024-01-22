@@ -24,22 +24,22 @@ var removeNthFromEnd = function (head, n) {
    * @时间复杂度 O(L)
    * @空间复杂度 O(1)
    */
-
-  let fast = head;
   let slow = head;
+  let fast = head;
 
   let i = 0;
   while (i < n) {
-    fast = fast.next; // fast 和 slow 相隔 n
+    fast = fast.next;
     i++;
   }
 
-  if (fast === null) return head.next; // 删除的是头结点的情况
+  if (fast === null) return head.next;
 
   while (fast.next !== null) {
     fast = fast.next;
     slow = slow.next;
   }
+
   slow.next = slow.next.next;
 
   return head;

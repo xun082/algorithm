@@ -46,7 +46,7 @@ var mergeTwoLists = function (list1, list2) {
   let current = preHead;
 
   while (list1 !== null && list2 !== null) {
-    if (list1.val <= list2.val) {
+    if (list1.val >= list2.val) {
       current.next = list1;
       list1 = list1.next;
     } else {
@@ -56,7 +56,6 @@ var mergeTwoLists = function (list1, list2) {
     current = current.next;
   }
 
-  // 因为同时循环的,可能存在某一个链表存在一个元素
   current.next = list1 === null ? list2 : list1;
 
   return preHead.next;

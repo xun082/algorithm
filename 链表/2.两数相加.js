@@ -56,7 +56,6 @@ var addTwoNumbers = function (l1, l2) {
    * @author xun
    * @method 哨兵节点
    */
-
   const dummy = new ListNode(null);
 
   let current = dummy;
@@ -66,10 +65,9 @@ var addTwoNumbers = function (l1, l2) {
     const l1Val = l1 !== null ? l1.val : 0;
     const l2Val = l2 !== null ? l2.val : 0;
 
-    const sumVal = carry + l1Val + l2Val;
-    // 取整除数,不仅消除要超过10以上的数值影响,还可以判断是否要进位到sumVal
+    const sumVal = carry + l2Val + l1Val;
+
     carry = Math.floor(sumVal / 10);
-    // 去余数作为链表的下一个节点
     current.next = new ListNode(sumVal % 10);
 
     current = current.next;

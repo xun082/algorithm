@@ -43,7 +43,7 @@ var rotateRight = function (head, k) {
   if (add === n) {
     // 如果要移动的次数和链表的长度相同则直接返回
     return head;
-  }
+  } 
 
   current.next = head;
 

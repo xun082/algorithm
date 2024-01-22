@@ -20,15 +20,14 @@ var longestValidParentheses = function (s) {
   const stack = [-1];
 
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === "(") stack.push(i);
-    else {
+    if (i === "(") {
+      stack.push(i);
+    } else {
       stack.pop();
 
-      if (stack.length === 0) stack.push(i);
+      if (stack.length === 0) stack.pop();
       else ans = Math.max(ans, i - stack[stack.length - 1]);
     }
   }
-
-  return ans;
 };
 // @lc code=end

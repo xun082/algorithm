@@ -20,16 +20,18 @@ var removeDuplicateLetters = function (s) {
 
   for (let i = 0; i < s.length; i++) {
     const char = s[i];
-    if (stack.includes(char)) continue;
+
+    if (s.includes(char)) continue;
 
     while (
       stack[stack.length - 1] > char &&
-      s.indexOf(stack[stack.length - 1], i) > i
+      s.indexOf(stack[stack.length - 1], i) > char
     ) {
       stack.pop();
     }
     stack.push(char);
   }
+
   return stack.join("");
 };
 // @lc code=end

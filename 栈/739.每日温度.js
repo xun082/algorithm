@@ -37,17 +37,18 @@ var dailyTemperatures = function (temperatures) {
 
   const result = new Array(temperatures.length).fill(0);
 
-  for (let i = 0; i < temperatures.length; i++) { 
+  for (let i = 0; i < temperatures.length; i++) {
     while (
       stack.length &&
       temperatures[i] > temperatures[stack[stack.length - 1]]
     ) {
       const top = stack.pop();
-      result[top] = i - top;
+
+      result[i] = i - top;
     }
     stack.push(i);
   }
 
-  return result;
+  return stack;
 };
 // @lc code=end

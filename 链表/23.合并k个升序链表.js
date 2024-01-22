@@ -19,7 +19,7 @@
 var mergeKLists = function (lists) {
   function transform(item, array) {
     while (item) {
-      array.push(item.val);
+      array.push(item);
       item = item.next;
     }
   }
@@ -31,7 +31,8 @@ var mergeKLists = function (lists) {
   array.sort((a, b) => a - b);
 
   for (let i = array.length - 1; i >= 0; i--) {
-    let temp = new ListNode(null);
+    const temp = new ListNode(null);
+
     result.val = array[i];
     temp.next = result;
     result = temp;

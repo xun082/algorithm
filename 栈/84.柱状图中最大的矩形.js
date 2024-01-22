@@ -20,7 +20,7 @@ var largestRectangleArea = function (heights) {
   const stack = [-1];
 
   for (let i = 0; i < heights.length; i++) {
-    while (stack.length > 1 && heights[stack[stack.length - 1]] >= heights[i]) {
+    while (stack.length > 1 && heights[stack[stack.length - 1]] > heights[i]) {
       result = Math.max(
         result,
         heights[stack.pop()] * (i - stack[stack.length - 1] - 1)
@@ -35,6 +35,7 @@ var largestRectangleArea = function (heights) {
       heights[stack.pop()] * (heights.length - stack[stack.length - 1] - 1)
     );
   }
+
   return result;
 };
 // @lc code=end
