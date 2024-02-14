@@ -24,30 +24,31 @@ var zigzagLevelOrder = function (root) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
-  if (!root) return [];
-
   const result = [];
-  const queue = [root];
-
+  const stack = [root];
   let isOrderLeft = true;
 
-  while (queue.length) {
-    let n = queue.length;
+  if (!root) return result;
+
+  while (stack.length) {
+    let n = stack.length;
     const current = [];
 
     while (n > 0) {
-      const node = queue.shift();
+      const node = stack.shift();
 
       if (isOrderLeft) current.push(node.val);
       else current.unshift(node.val);
 
-      node.left && queue.push(node.left);
-      node.right && queue.push(node.right);
+      node.left && stack.push(node.left);
+      node.right && stack.push(node.right);
       n--;
     }
+
     result.push(current);
     isOrderLeft = !isOrderLeft;
   }
+
   return result;
 };
 // @lc code=end

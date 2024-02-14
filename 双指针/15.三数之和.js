@@ -18,7 +18,7 @@ var threeSum = function (nums) {
    */
   const result = [];
   const length = nums.length;
-
+  
   nums.sort((a, b) => a - b);
 
   for (let i = 0; i < length; i++) {

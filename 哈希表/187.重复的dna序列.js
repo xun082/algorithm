@@ -16,17 +16,18 @@ var findRepeatedDnaSequences = function (s) {
    * @timeComplexity O(NL)
    * @spaceComplexity O(NL)
    */
-  const L = 10;
+  const n = 10;
   const ans = [];
   const map = new Map();
 
   const length = s.length;
 
-  for (let i = 0; i <= length - L; i++) {
-    const sub = s.slice(i, i + L);
-    map.set(sub, (map.get(sub) || 0) + 1);
+  for (let i = 0; i <= length - n; i++) {
+    const sub = s.slice(i, i + n);
+    const count = (map.get(sub) || 0) + 1;
+    map.set(sub, count);
 
-    if (map.get(sub) === 2) ans.push(sub);
+    if (count === 2) ans.push(sub);
   }
 
   return ans;

@@ -16,11 +16,9 @@ var longestConsecutive = function (nums) {
    * @timeComplexity O(N)
    * @spaceComplexity O(N)
    */
-  const set = new Set();
+  const set = new Set(nums);
 
-  for (const num of nums) set.add(num);
-
-  let length = 0;
+  let n = 0;
 
   for (const num of set) {
     if (!set.has(num - 1)) {
@@ -28,13 +26,14 @@ var longestConsecutive = function (nums) {
       let currentStreak = 1;
 
       while (set.has(currentNum + 1)) {
-        currentNum++;
-        currentStreak++;
+        currentNum += 1;
+        currentStreak += 1;
       }
-      length = Math.max(length, currentStreak);
+
+      n = Math.max(n, currentStreak);
     }
   }
 
-  return length;
+  return n;
 };
 // @lc code=end

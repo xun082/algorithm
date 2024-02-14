@@ -16,17 +16,16 @@ var lengthOfLIS = function (nums) {
    * @timeComplexity O(N**2)
    * @spaceComplexity O(N)
    */
-  const length = nums.length;
+  const dp = new Array(nums.length).fill(1);
 
-  const path = new Array(length + 1).fill(1);
-
-  let result = 1;
-  for (let i = 1; i < length; i++) {
+  for (let i = 0; i < nums.length; i++) {
     for (let j = 0; j < i; j++) {
-      if (nums[i] > nums[j]) path[i] = Math.max(path[i], path[j] + 1);
+      if (nums[i] > nums[j]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+      }
     }
-    result = Math.max(path[i], result);
   }
-  return result;
+
+  return Math.max(...dp);
 };
 // @lc code=end

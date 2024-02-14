@@ -17,22 +17,25 @@ var firstMissingPositive = function (nums) {
    * @spaceComplexity O(1)
    */
 
-  const length = nums.length;
+  if (nums.length === 0) return 1;
+  if (nums.length === 1 && nums[0] <= 0) return 1;
 
-  for (let i = 0; i < length; i++) {
-    if (nums[i] <= 0) nums[i] = length + 1;
-  }
+  const arr = [];
 
-  for (let i = 0; i < length; i++) {
-    let x = Math.abs(nums[i]);
-    if (x >= 1 && x <= length) {
-      nums[x - 1] = nums[x - 1] < 0 ? nums[x - 1] : -nums[x - 1];
+  for (const value of nums) {
+    if (value >= 1) {
+      arr[value] = 1;
     }
   }
 
-  for (let i = 0; i < length; i++) {
-    if (nums[i] >= 0) return i + 1;
+  if (!arr.length) return 1;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (!arr[i]) {
+      return i;
+    }
   }
-  return length + 1;
+
+  return arr.length;
 };
 // @lc code=end

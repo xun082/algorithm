@@ -33,11 +33,11 @@ var isSubPath = function (head, root) {
    * @spaceComplexity O(1)
    */
   if (!head) return true;
-  if (root === null) return false;
+  if (!root) return false;
 
   function check(head, root) {
-    if (head === null) return true;
-    if (root === null) return false;
+    if (!head) return true;
+    if (!root) return false;
 
     return (
       head.val === root.val &&

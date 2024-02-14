@@ -20,7 +20,7 @@
 var recoverTree = function (root) {
   /**
    * @author xun
-   * @method
+   * @method 隐式中序遍历
    * @timeComplexity O(N)
    * @spaceComplexity O(H)
    */

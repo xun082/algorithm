@@ -25,30 +25,27 @@ var levelOrder = function (root) {
    * @spaceComplexity O(N)
    */
 
-  const result = []; //结果
-  const queue = [root]; //遍历中用的队列
+  const result = [];
+  const stack = [root];
 
-  if (root === null) {
-    return result;
-  }
+  if (!root) return result;
 
-  //当队列中还有值
-  while (queue.length) {
-    let length = queue.length;
-    const currentLevel = [];
+  while (stack.length) {
+    let n = stack.length;
+    const current = [];
 
-    while (length > 0) {
-      const node = queue.shift();
-      currentLevel.push(node.val);
+    while (n > 0) {
+      const node = stack.shift();
+      current.push(node.val);
 
-      node.left && queue.push(node.left);
-      node.right && queue.push(node.right);
-
-      length--;
+      node.left && stack.push(node.left);
+      node.right && stack.push(node.right);
+      n--;
     }
 
-    result.push(currentLevel);
+    result.push(current);
   }
+
   return result;
 };
 // @lc code=end

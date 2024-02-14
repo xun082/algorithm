@@ -16,19 +16,20 @@ var sortColors = function (nums) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  const length = nums.length;
+  const n = nums.length;
 
   let left = 0;
-  let right = length - 1;
+  let right = n - 1;
 
   for (let i = 0; i <= right; i++) {
     while (i < right && nums[i] === 2) {
-      [nums[i], nums[right]] = [nums[right], nums[i]]; // 最大的,直接放最后
-      --right;
+      [nums[i], nums[right]] = [nums[right], nums[i]];
+      right--;
     }
+
     if (nums[i] === 0) {
       [nums[i], nums[left]] = [nums[left], nums[i]];
-      ++left;
+      left++;
     }
   }
 };

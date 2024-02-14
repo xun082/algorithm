@@ -17,22 +17,23 @@ var compareVersion = function (version1, version2) {
    * @timeComplexity O(M + N)
    * @spaceComplexity O(1)
    */
-  const n = version1.length;
-  const m = version2.length;
+  const m = version1.length;
+  const n = version2.length;
+
   let i = 0;
   let j = 0;
 
-  while (i < n || j < m) {
+  while (i < m || j < n) {
     let x = 0;
     let y = 0;
 
-    while (i < n && version1[i] !== ".") {
+    while (i < m && version1[i] !== ".") {
       x = x * 10 + version1[i] - "0";
       i++;
     }
     i++;
 
-    while (j < m && version2[j] !== ".") {
+    while (j < n && version2[j] !== ".") {
       y = y * 10 + version2[j] - "0";
       j++;
     }
@@ -40,6 +41,7 @@ var compareVersion = function (version1, version2) {
 
     if (x !== y) return x > y ? 1 : -1;
   }
+
   return 0;
 };
 // @lc code=end

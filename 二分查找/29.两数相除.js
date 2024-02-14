@@ -14,7 +14,7 @@ var divide = function (dividend, divisor) {
   /**
    * @author xun
    * @method 类二分查找
-   * @timeComplexity O((logC)
+   * @timeComplexity O((logC )
    * @spaceComplexity O((logC)
    */
   const MAX_VALUE = 2 ** 31 - 1;

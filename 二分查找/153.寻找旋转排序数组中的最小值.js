@@ -16,16 +16,16 @@ var findMin = function (nums) {
    * @timeComplexity O(log N)
    * @spaceComplexity O(1)
    */
-  let low = 0;
-  let high = nums.length - 1;
+  let left = 0;
+  let right = nums.length - 1;
 
-  while (low < high) {
-    const mid = Math.floor((high - low) / 2) + low;
+  while (left < right) {
+    const mid = Math.floor(((right - left) >> 1) + left);
 
-    if (nums[mid] < nums[high]) high = mid;
-    else low = mid + 1;
+    if (nums[mid] < nums[right]) right = mid;
+    else left = mid + 1;
   }
 
-  return nums[low];
+  return nums[left];
 };
 // @lc code=end

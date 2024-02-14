@@ -16,34 +16,30 @@ var compress = function (chars) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  function reverse(chars, left, right) {
-    while (left < right) {
-      [chars[left], chars[right]] = [chars[right], chars[left]];
-      left++;
-      right--;
+  let write = 0; // 用于写入压缩结果的位置
+  let i = 0; // 用于遍历数组的指针
+
+  while (i < chars.length) {
+    let j = i;
+    // 计算相同字符的长度
+    while (j < chars.length && chars[i] === chars[j]) {
+      j++;
     }
-  }
-
-  const length = chars.length;
-  let write = [];
-  let left = 0;
-
-  for (let read = 0; read < length; read++) {
-    if (read === length - 1 || chars[read] !== chars[read + 1]) {
-      chars[write++] = chars[read];
-
-      let num = read - left + 1;
-      if (num > 1) {
-        const anchor = write;
-        while (num > 0) {
-          chars[write++] = "" + (num % 10);
-          num = Math.floor(num / 10);
-        }
-        reverse(chars, anchor, write - 1);
+    // 计算字符重复的次数
+    const count = j - i;
+    // 写入字符
+    chars[write++] = chars[i];
+    // 如果字符重复次数大于1，则写入重复次数
+    if (count > 1) {
+      for (const c of count.toString()) {
+        chars[write++] = c;
       }
-      left = read + 1;
     }
+    // 移动到下一个不同的字符
+    i = j;
   }
+
+  // 返回压缩后的长度
   return write;
 };
 

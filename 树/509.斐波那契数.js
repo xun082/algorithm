@@ -17,16 +17,13 @@ var fib = function (n) {
    * @timeComplexity O(N)
    * @spaceComplexity O(1)
    */
-  // if (n < 2) return n;
-  // let p = 0;
-  // let q = 0;
-  // let r = 1;
+  // const dp = [0, 1];
+
   // for (let i = 2; i <= n; i++) {
-  //   p = q;
-  //   q = r;
-  //   r = p + q;
+  //   dp[i] = dp[i - 1] + dp[i - 2];
   // }
-  // return r;
+
+  // return dp[n];
   /**
    * @author xun
    * @method 通项公式
